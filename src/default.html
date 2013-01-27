@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Spaaaaaaaaaace!</title>
+	<link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="css/main.css">
+	<!-- <link rel="stylesheet" href="css/main-compiled.css"> -->
+</head>
+
+<body>
+	<div id="game-wrapper">
+		<h1>Spaaaaaaaaaace!</h1>
+		
+		<div id="canvas-wrapper">
+			<canvas id="main-canvas" width="800" height="500"></canvas>
+			<div id="main-loading">Loading...</div>
+
+			<div id="directions" class="ui-partial-screen "> 
+				<p class="ui-screen-header">Controls: </p>
+				<p>a - left</p>
+				<p>d - right</p>
+				<p>space - fire</p>
+			</div>
+
+			<div id="stats" class="ui-partial-screen "> 
+				<p class="ui-screen-header">Stats: </p>
+				<p>Score: <span id="score">0</span></p>
+				<p>Wave: <span id="wave">1</span> </p>
+				<p>To destroy: <span id="enemies"></span></p>
+				<p>Time: <span id="time"></span></p>
+			</div>
+			<div id="menu" class="ui-partial-screen"> 
+				<p class="ui-screen-header">Menu: </p>
+				<p><button id="restart-button" class="ui-button">Restart!</button></p>
+				
+			</div>
+		</div>
+		<p id="credits">Emir Osmanoski - 2012</p>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/soundjs-0.3.0.min.js"></script>
+<script type="text/javascript" src="js/buzz.js"></script>
+<script type="text/javascript" src="js/debug.js"></script>
+<script type="text/javascript" src="js/loader.js"></script>
+<script type="text/javascript" src="js/animation-api.js"></script>
+<script type="text/javascript" src="js/draw.js"></script>
+<script type="text/javascript" src="js/input.js"></script>
+<script type="text/javascript" src="js/background.js"></script>
+<script type="text/javascript" src="js/particle.js"></script>
+<script type="text/javascript" src="js/emanager.js"></script>
+<script type="text/javascript" src="js/projectile.js"></script>
+<script type="text/javascript" src="js/doodad.js"></script>
+<script type="text/javascript" src="js/enemy.js"></script>
+<script type="text/javascript" src="js/spawner.js"></script>
+<script type="text/javascript" src="js/doodadspawner.js"></script>
+<script type="text/javascript" src="js/player.js"></script>
+
+<script type="text/javascript" src="js/domui.js"></script>
+<script type="text/javascript" src="js/state.js"></script>
+
+<!-- Should always be the last script added  as it starts the game -->
+<script type="text/javascript" src="js/main.js"></script>
+
+<!-- <script type="text/javascript" src="js/compiled_output.js"></script> -->
+
+</html>
