@@ -57,8 +57,14 @@
 			}
 		};
 
-		// Return a bounding box for the projectile
+		/*
+			Return a player bounding box. We are going to be returning a collection of bounding boxes,
+			to make the collision more complex
+		*/
 		var getBoundingBox = function() {
+
+			var boundingBoxCollection = [];
+		
 			var boundingBox = {};
 
 			// setup the bounding box properties
@@ -116,7 +122,8 @@
 		return {
 			reset:reset,
 			update:update,
-			draw:draw
+			draw:draw,
+			getBoundingBox:getBoundingBox
 		};
 	})();
 

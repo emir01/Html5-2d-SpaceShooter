@@ -86,6 +86,7 @@
 		// check collisions for the entitiy given with the entity wrapper 
 		// and its index in the emanager entitiy collection
 		var checkCollisions = function(entWrapper, entitiyIndex){
+
 			// if the entitiy was updated check its collisions with related entities
 			if(entWrapper.entity.type == "projectile"){
 				// check for enemy collisions for the projectile
@@ -110,6 +111,7 @@
 					delete colidedEnemy;
 					delete entWrapper;
 
+
 					// Update the state
 					g.state.enemyDestroyed();
 				}
@@ -117,7 +119,27 @@
 
 			// if the entitiy was updated and its an enemy check if it collides with the player
 			if(entWrapper.entity.type == "enemy"){
+				var enemyPlayerCollision =  checkCollisionWithPlayer(entWrapper.entity)
 
+				if(enemyPlayerCollision){
+
+					var colidedWithPlayerEnemy = entWrapper.entity;
+
+					// if the enemy collides with the enemy remove 
+					// the enemy and do the explosion
+					entities.splice(entitiyIndex, 1);
+
+					// ask the particle manager to render an enemy
+					// explosion at the collision cords
+					g.particle.enemyExplosion(
+										entWrapper.entity.x, 
+										entWrapper.entity.y,
+										entWrapper.entity.image.width,
+										entWrapper.entity.image.height
+										);
+					
+					delete entWrapper.entity;
+				}
 			}
 		}
 
@@ -171,6 +193,20 @@
 			}
 
 			return colidedIndex;
+		};
+
+
+		/*
+			Check if an enemy collides with the player 
+		*/
+
+		var checkCollisionWithPlayer = function(enemy){
+			var playerbb =	 g.player.getBoundingBox();
+			var enemybb = enemy.getBoundingBox();
+
+			var theyIntersect = isIntersect(playerbb, enemybb);
+
+			return theyIntersect;
 		};
 
 		// check if two bounding boxes intersect meaning there is a BoundingBox collision between them
