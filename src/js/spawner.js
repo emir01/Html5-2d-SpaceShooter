@@ -76,7 +76,9 @@
 		// Create a destroyable basic ship enemy.
 		var createShipEnemy = function(){
 			var randomX = getRandomX(g.assets.enemy);
+
 			var randomSpeed = (((Math.random() * 3)) / 10) + 0.2;
+			g.dbg.log(randomSpeed);
 
 			var shipEnemy = new g.enemy(
 				g.assets.enemy,

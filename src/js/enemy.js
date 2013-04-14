@@ -23,6 +23,10 @@
 	// the enemy class draw function
 	enemy.prototype.draw = function(ctx){
 		g.draw.DrawImage(ctx, this.image, this.x, this.y, this.rotation);
+
+		if(g.config.drawBoundingBoxes){
+			g.draw.BoundingBox(ctx, this.getBoundingBox());
+		}
 	};
 
 	// returns true if the enemy is off the canvas

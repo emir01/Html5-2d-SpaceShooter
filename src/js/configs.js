@@ -11,8 +11,16 @@
 
 		var soundsEnabled = false;
 
+		/*
+			Controls if we will be drawing bounding boxes in a debug sort of mode
+			for the entities being drawn
+		*/
+
+		var drawBoundingBoxes = true;
+
 		return {
-			soundEnabled:soundsEnabled
+			soundEnabled:soundsEnabled,
+			drawBoundingBoxes:drawBoundingBoxes
 		};
 	})();
 })(window.game = window.game || {});

@@ -17,6 +17,7 @@
 		// draw a rectangle on the context
 		var rect = function(ctx, x, y, w, h){
 			ctx.fillStyle = "#FFF";
+			
 			ctx.fillRect(x, y, w, h);
 		};
 		
@@ -34,6 +35,45 @@
 			else{
 				drawRotatedImage(ctx, img, x, y, rotation);
 			}
+		};
+
+		/*
+			
+			Draw a rectangle outline
+			
+		*/
+
+		var rectOutline = function(ctx, x, y, w, h, style){
+			ctx.fillStyle = "#FFF";
+			ctx.strokeStyle = style;
+
+			ctx.strokeRect(x, y, w, h);
+		};
+
+		/*
+			Draws a rectangle bounding box
+		*/
+
+		var  drawBoundingBox = function(ctx, boundingBox){
+
+			if(boundingBox === null){
+				return;
+			}
+
+			// its a single bounding box
+			if(typeof boundingBox === 'object'){
+				rectOutline(ctx, boundingBox.x, boundingBox.y, boundingBox.w, boundingBox.h,"F00");
+			}
+
+			// it probably is an array of bounding boxes so draw all of them
+			if(typeof boundingBox.length != undefined){
+				for (var i = boundingBox.length - 1; i >= 0; i--) {
+					var bb = boundingBox[i];
+					rectOutline(ctx, bb.x, bb.y, bb.w, bb.h,"F00");
+				};
+			}
+
+			return;
 		};
 
 		// ================== Private Functions ====================
@@ -64,7 +104,8 @@
 		return {
 			Clear:clear,
 			Rect: rect,
-			DrawImage:drawImage
+			DrawImage:drawImage,
+			BoundingBox: drawBoundingBox
 		};
 	})();
 })(window.game = window.game || {});

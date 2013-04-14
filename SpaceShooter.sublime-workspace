@@ -1,0 +1,236 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"packages",
+				"Preferences: Browse Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"listp",
+				"Package Control: List Packages"
+			],
+			[
+				"brows",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Emir/Desktop/Python/LPTHW/Ex5/ex5.py",
+		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/Modules/FileUploadModule.less",
+		"/F/Projects/Github/Tagedit/index.html",
+		"/F/Projects/Github/Tagedit/playground.html",
+		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/common/FileUploadExtra.css",
+		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/DocumentDetailsModule.less",
+		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/site.less",
+		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/DocumentSearchModule.less",
+		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Scripts/DataQuery/Tables/DatatableExtensions.js"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Fn",
+			"fn",
+			"Callbacks",
+			"[Project1].[C1]",
+			"this",
+			",",
+			"this",
+			"public",
+			" <summary>",
+			"summary",
+			"1",
+			",",
+			"dataTablesConfigObject",
+			"cfg"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"fileuploadmo",
+				"DSS.Presentation/DSS.Presentation.Web/Content/less/Modules/FileUploadModule.less"
+			],
+			[
+				"fileu",
+				"DSS.Presentation/DSS.Presentation.Web/Content/common/FileUploadExtra.css"
+			],
+			[
+				"site.les",
+				"DSS.Presentation/DSS.Presentation.Web/Content/less/site.less"
+			],
+			[
+				"searchmode",
+				"DSS.Presentation/DSS.Presentation.Web/Content/less/DocumentSearchModule.less"
+			],
+			[
+				"documentdetai",
+				"DSS.Presentation/DSS.Presentation.Web/Content/less/DocumentDetailsModule.less"
+			],
+			[
+				"documentsearmod",
+				"DSS.Presentation/DSS.Presentation.Web/Content/less/DocumentSearchModule.less"
+			],
+			[
+				"extensions",
+				"DSS.Presentation/DSS.Presentation.Web/Scripts/DataQuery/Tables/DatatableExtensions.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 219.0,
+	"status_bar_visible": true
+}

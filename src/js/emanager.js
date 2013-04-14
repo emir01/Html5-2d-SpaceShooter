@@ -137,7 +137,7 @@
 										entWrapper.entity.image.width,
 										entWrapper.entity.image.height
 										);
-					
+
 					delete entWrapper.entity;
 				}
 			}
@@ -201,10 +201,20 @@
 		*/
 
 		var checkCollisionWithPlayer = function(enemy){
+
 			var playerbb =	 g.player.getBoundingBox();
 			var enemybb = enemy.getBoundingBox();
 
-			var theyIntersect = isIntersect(playerbb, enemybb);
+			var theyIntersect = false;
+
+			for (var i = playerbb.length - 1; i >= 0; i--) {
+				var onebb = playerbb[i];
+
+				if(isIntersect(onebb, enemybb)){
+					theyIntersect = true;
+					break;
+				}
+			};
 
 			return theyIntersect;
 		};

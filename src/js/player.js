@@ -60,25 +60,48 @@
 		/*
 			Return a player bounding box. We are going to be returning a collection of bounding boxes,
 			to make the collision more complex
+
+			The multiple values are manually calculated from the sprites for the enemy and players
 		*/
 		var getBoundingBox = function() {
 
 			var boundingBoxCollection = [];
-		
-			var boundingBox = {};
 
-			// setup the bounding box properties
-			boundingBox.x = x;
-			boundingBox.y = y;
-			boundingBox.w = activeImage.width;
-			boundingBox.h = activeImage.height;
+			// Add the hull bounding box
+			var boundingBoxHull = {};
 
-			return boundingBox;
+			boundingBoxHull.x = x + 40;
+			boundingBoxHull.y = y;
+
+			boundingBoxHull.w = 18;
+			boundingBoxHull.h = activeImage.height;
+
+			boundingBoxCollection.push(boundingBoxHull)
+			// --------------------------------------------------
+
+			// Add the wings bounding box
+			var boundingBoxWings = {};
+
+			boundingBoxWings.x = x;
+			boundingBoxWings.y = y + 31;
+
+			boundingBoxWings.w = activeImage.width;
+			boundingBoxWings.h = 31;
+
+			boundingBoxCollection.push(boundingBoxWings)
+
+			// ---------------------------------------------------
+
+			return boundingBoxCollection;
 		};
 
 		// draw the player on the given canvas context
 		var draw = function(ctx){
 			g.draw.DrawImage(ctx, activeImage, x, y);
+
+			if(g.config.drawBoundingBoxes){
+				g.draw.BoundingBox(ctx,getBoundingBox());
+			}
 		};
 
 		// ========================== PRIVATE FUNCTIONS ==========================
