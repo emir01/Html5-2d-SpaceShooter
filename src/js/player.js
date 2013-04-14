@@ -50,6 +50,7 @@
 				activeImage = g.assets.player;
 			}
 
+
 			if(g.input.wasKeyFull("fire")){
 				fireLaserSound();
 				playerFireWeapon();
@@ -79,17 +80,19 @@
 		// Fire tghe laser sound using multiple buzz audio objects
 		// Should be better optimized later on
 		var fireLaserSound = function(){
-			if(g.assets.soundLaser1.isEnded() || g.assets.soundLaser1.isPaused()){
-				g.assets.soundLaser1.play();	
-			}
-			else if(g.assets.soundLaser2.isEnded() || g.assets.soundLaser2.isPaused()){
-				g.assets.soundLaser2.play()
-			}
-			else if(g.assets.soundLaser3.isEnded() || g.assets.soundLaser3.isPaused()){
-				g.assets.soundLaser3.play()
-			}
-			else if(g.assets.soundLaser4.isEnded() || g.assets.soundLaser4.isPaused()){
-				g.assets.soundLaser4.play()
+			if(g.config.soundEnabled){
+				if(g.assets.soundLaser1.isEnded() || g.assets.soundLaser1.isPaused()){
+					g.assets.soundLaser1.play();	
+				}
+				else if(g.assets.soundLaser2.isEnded() || g.assets.soundLaser2.isPaused()){
+					g.assets.soundLaser2.play()
+				}
+				else if(g.assets.soundLaser3.isEnded() || g.assets.soundLaser3.isPaused()){
+					g.assets.soundLaser3.play()
+				}
+				else if(g.assets.soundLaser4.isEnded() || g.assets.soundLaser4.isPaused()){
+					g.assets.soundLaser4.play()
+				}
 			}
 		};
 

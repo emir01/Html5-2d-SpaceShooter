@@ -137,18 +137,19 @@
 		// Work around the issues with the explosion sounds
 		// TODO: Refactor out to a sound manager
 		var playExplosionAudio = function(){
-			if(g.assets.soundExplosion1.isEnded() || g.assets.soundExplosion1.isPaused()){
-				g.assets.soundExplosion1.play();	
-			}
-			else if(g.assets.soundExplosion2.isEnded() || g.assets.soundExplosion2.isPaused()){
-				g.assets.soundExplosion2.play()
-			}
-			else if(g.assets.soundExplosion3.isEnded() || g.assets.soundExplosion3.isPaused()){
-				g.assets.soundExplosion3.play()
+			if(g.config.soundEnabled){
+				if(g.assets.soundExplosion1.isEnded() || g.assets.soundExplosion1.isPaused()){
+					g.assets.soundExplosion1.play();	
+				}
+				else if(g.assets.soundExplosion2.isEnded() || g.assets.soundExplosion2.isPaused()){
+					g.assets.soundExplosion2.play()
+				}
+				else if(g.assets.soundExplosion3.isEnded() || g.assets.soundExplosion3.isPaused()){
+					g.assets.soundExplosion3.play()
+				}
 			}
 		};
 
-		
 		// for a given projectile checks if it collides with any enemy.
 		// If there is an enemy collision we return the enemy index so we can remove both entities.
 		// If there is no collision we return a negative index
