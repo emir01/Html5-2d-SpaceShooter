@@ -67,6 +67,10 @@
 		var playerHit = function(){
 			playerLives--; 
 
+			if(playerLives == 0){
+
+			}
+
 			g.domui.setPlayerLives(playerLives);
 		}
 
