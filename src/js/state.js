@@ -27,6 +27,10 @@
 		// When did the player start to play
 		var startPlayTime;
 
+		// number of milliseconds the player is invurnerable
+		// after he is hit
+		var playerInvuTime = 5000;
+
 
 		// ======================== Public Functions =================
 		// ===========================================================
@@ -47,6 +51,7 @@
 
 		// the main state manager draw call
 		var draw = function(ctx){
+
 		};
 
 		// Update the players score by currently a fix ammount of 10
@@ -55,13 +60,24 @@
 			checkWaveCounters();
 		};
 
+		/*
+			Update the player lives
+		*/
+
+		var playerHit = function(){
+			playerLives--; 
+
+			g.domui.setPlayerLives(playerLives);
+		}
+
 		// ======================== Private Functions =================
 		// ============================================================
 
 		// helper function that resets state properties
 		var resetStateProperties = function(){
 			// player state properties
-			playerLives = 1;
+			playerLives = 3;
+			g.domui.setPlayerLives(playerLives);
 
 			score = 0;
 			g.domui.setPlayerScore(score);
@@ -154,9 +170,11 @@
 
 			//setters
 			enemyDestroyed:enemyDestroyed,
+			playerHit:playerHit,
 
 			// getters
-			getSpawnTime:getSpawnTime
+			getSpawnTime:getSpawnTime,
+			playerInvuTime:playerInvuTime
 		};
 
 	})();

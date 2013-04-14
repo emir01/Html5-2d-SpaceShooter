@@ -19,11 +19,17 @@
 		// keep track of player projectiles
 		var projectiles = [];
 
+		// Player can be destroyed
+		var playerCanBeHit = true;
+
+		// flag for actually drawing the player, which can be used 
+		// to implement blinking
+		var drawPlayer = true;
+
 		// player functions : 
 
 		// the initial player load function
 		var reset = function () {
-
 			activeImage = g.assets.player;
 
 			width = g.assets.player.width;
@@ -31,6 +37,26 @@
 
 			x = g.canvas.width / 2 - (width / 2);
 			y = g.canvas.height - 90;
+		};
+
+		/*
+			The player has been hit, his position will have to be reset and state set accordingly
+		*/
+
+		var playerHit = function(){
+
+			if(playerCanBeHit){
+				reset();
+
+				g.state.playerHit();
+
+				playerCanBeHit = false;
+
+				setTimeout(function(){
+					playerCanBeHit = true;
+				}, g.state.playerInvuTime);
+			}
+
 		};
 
 		// update the player state based on pressed keys
@@ -50,10 +76,27 @@
 				activeImage = g.assets.player;
 			}
 
-
 			if(g.input.wasKeyFull("fire")){
 				fireLaserSound();
 				playerFireWeapon();
+			}
+
+			// Blinking section if the player cannot be hit
+			if(!playerCanBeHit){
+
+				if(drawPlayer){
+					setTimeout(function(){
+						drawPlayer = false;
+					}, 150)
+				}
+				else{
+					setTimeout(function(){
+						drawPlayer = true;
+					}, 150)
+				}
+			}
+			else{
+				drawPlayer = true;
 			}
 		};
 
@@ -89,18 +132,24 @@
 			boundingBoxWings.h = 31;
 
 			boundingBoxCollection.push(boundingBoxWings)
-
 			// ---------------------------------------------------
 
 			return boundingBoxCollection;
 		};
 
+		var playerIsHittable = function(){
+			return playerCanBeHit;
+		};
+
 		// draw the player on the given canvas context
 		var draw = function(ctx){
-			g.draw.DrawImage(ctx, activeImage, x, y);
 
-			if(g.config.drawBoundingBoxes){
-				g.draw.BoundingBox(ctx,getBoundingBox());
+			if(drawPlayer){
+				g.draw.DrawImage(ctx, activeImage, x, y);
+
+				if(g.config.drawBoundingBoxes){
+					g.draw.BoundingBox(ctx,getBoundingBox());
+				}
 			}
 		};
 
@@ -143,10 +192,16 @@
 		};
 
 		return {
+			x:x,
+			y:y,
+			w:width,
+			h:height,
 			reset:reset,
 			update:update,
 			draw:draw,
-			getBoundingBox:getBoundingBox
+			getBoundingBox:getBoundingBox,
+			playerIsHittable:playerIsHittable,
+			playerHit:playerHit
 		};
 	})();
 

@@ -16,6 +16,14 @@
 			$("#score").text(score);
 		};
 
+		/* 
+			Sets the number of player lives on the ui
+		*/
+
+		var setPlayerLives = function(lives){
+			$("#lives").text(lives);
+		};
+
 		// Set the wave number on the dom ui
 		var setWave = function(wave){
 			$("#wave").text(wave);
@@ -38,6 +46,7 @@
 		// ===========================================================
 
 		return {
+			setPlayerLives:setPlayerLives,
 			setPlayerScore:setPlayerScore,
 			setWave:setWave,
 			setEnemiesLeft:setEnemiesLeft,

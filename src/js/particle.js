@@ -139,7 +139,7 @@
 				explosion, // the sprite particle system required image
 				3,         // the number of rows on the image
 				8,         // the number of individual images ( columns ) in each row
-				1,          // the rendering speed
+				1,         // the rendering speed
 				w,		   // the width of the element the sprite system will be "replacing"
 				h          // the height of the element the sprite system will be "replacing"
 			);

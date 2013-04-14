@@ -111,7 +111,6 @@
 					delete colidedEnemy;
 					delete entWrapper;
 
-
 					// Update the state
 					g.state.enemyDestroyed();
 				}
@@ -129,6 +128,7 @@
 					// the enemy and do the explosion
 					entities.splice(entitiyIndex, 1);
 
+
 					// ask the particle manager to render an enemy
 					// explosion at the collision cords
 					g.particle.enemyExplosion(
@@ -137,6 +137,10 @@
 										entWrapper.entity.image.width,
 										entWrapper.entity.image.height
 										);
+
+					var ppbb = g.player.getBoundingBox();
+
+					g.player.playerHit();
 
 					delete entWrapper.entity;
 				}
@@ -201,6 +205,11 @@
 		*/
 
 		var checkCollisionWithPlayer = function(enemy){
+
+			// if the player cant be hit just return false
+			if(!g.player.playerIsHittable()){
+				return false;
+			}
 
 			var playerbb =	 g.player.getBoundingBox();
 			var enemybb = enemy.getBoundingBox();
