@@ -171,6 +171,14 @@
 			return playerLives;
 		};
 
+		var getPlayerScore = function(){
+			return score;
+		};
+
+		var getCurrentWave = function(){
+			return wave;
+		};
+
 		var isGameOver = function(){
 			return gameOver;
 		};
@@ -194,6 +202,8 @@
 			getSpawnTime:getSpawnTime,
 
 			getPlayerLives:getPlayerLives,
+			getPlayerScore:getPlayerScore,
+			getCurrentWave:getCurrentWave,
 			playerInvuTime:playerInvuTime,
 
 			isGameOver:isGameOver

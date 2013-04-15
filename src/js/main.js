@@ -105,6 +105,9 @@
 			// make the draw call
 			drawCall();
 		}
+		else{
+			g.domui.showGameOverOverlay(g.state.getPlayerScore(), g.state.getCurrentWave());
+		}
 	};
 
 	// the update call

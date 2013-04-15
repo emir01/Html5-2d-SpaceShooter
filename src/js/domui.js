@@ -11,6 +11,16 @@
 		// ======================== Public Functions =================
 		// ===========================================================
 
+		/*
+			Make
+		*/
+
+		var initDomUI = function(resetGameHandler){
+			$("#tryagain-button").click(function(){
+				resetgamehandler();
+			})
+		};
+
 		// Update the player score on the dom ui
 		var setPlayerScore = function(score){
 			$("#score").text(score);
@@ -56,6 +66,29 @@
 			$("#player-lives-message").slideUp();
 		};
 
+		/*
+			Show the game over overlay
+		*/
+
+		var showGameOverOverlay = function(score, wave){
+			// hide any other dom elements
+			$("#player-lives-message").hide();
+
+			// set scoring and wave
+			$("#gameover-score").text(score);
+
+			$("#gameover-wave").text(wave);
+
+			$("#game-over-screen").slideDown();
+		};
+
+		/*
+			Hides the game over screen overlay
+		*/
+		var hideGameOverOverlay = function(){
+			$("#game-over-screen").hide();
+		};
+
 		// ======================== Private Functions =================
 		// ===========================================================
 
@@ -70,9 +103,9 @@
 			setTimeElapsed:setTimeElapsed,
 
 			showPlayerLives:showPlayerLives,
-			hidePlayerLives:hidePlayerLives
+			hidePlayerLives:hidePlayerLives,
 
-
+			showGameOverOverlay:showGameOverOverlay
 		};
 
 	})();

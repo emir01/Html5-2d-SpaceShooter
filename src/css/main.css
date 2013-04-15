@@ -34,11 +34,20 @@ body{
 	font-size:30px;
 }
 
-#game-over-message {
+#game-over-screen {
 	display:none;
 	position:absolute;
-	top:225px;
+	top:100px;
 	left:280px;
+	font-size:30px;
+}
+
+#game-over-screen p {
+	font-size:22px;
+	text-align: center;
+}
+
+#game-over-screen #game-over-header{
 	font-size:30px;
 }
 
