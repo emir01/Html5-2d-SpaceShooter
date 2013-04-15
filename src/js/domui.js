@@ -39,6 +39,23 @@
 			$("#time").text(timeString);
 		};
 
+		/* 
+			Show the dom element with the remaining player lives
+		*/
+
+		var showPlayerLives = function(playerLives){
+			$("#player-lives-message").slideDown();
+			$("#livescount").text(playerLives);
+		};
+
+		/*
+			How the player lives dom element
+		*/
+
+		var hidePlayerLives = function(){
+			$("#player-lives-message").slideUp();
+		};
+
 		// ======================== Private Functions =================
 		// ===========================================================
 
@@ -50,7 +67,13 @@
 			setPlayerScore:setPlayerScore,
 			setWave:setWave,
 			setEnemiesLeft:setEnemiesLeft,
-			setTimeElapsed:setTimeElapsed
+			setTimeElapsed:setTimeElapsed,
+
+			showPlayerLives:showPlayerLives,
+			hidePlayerLives:hidePlayerLives
+
+
 		};
+
 	})();
 })(window.game = window.game || {});

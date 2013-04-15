@@ -31,6 +31,8 @@
 		// after he is hit
 		var playerInvuTime = 5000;
 
+		// indicator if the game is over
+		var gameOver = false;
 
 		// ======================== Public Functions =================
 		// ===========================================================
@@ -68,7 +70,7 @@
 			playerLives--; 
 
 			if(playerLives == 0){
-
+				gameOver = true;
 			}
 
 			g.domui.setPlayerLives(playerLives);
@@ -94,6 +96,10 @@
 			g.domui.setEnemiesLeft(enemiesInWave);
 
 			enemySpawnTime = 0.5;
+
+			playerInvuTime = 5000;
+
+			gameOver = false;
 		};
 
 		// helper function that resets modules like entitiy managers
@@ -161,6 +167,14 @@
 			return enemySpawnTime;
 		};
 
+		var getPlayerLives = function(){
+			return playerLives;
+		};
+
+		var isGameOver = function(){
+			return gameOver;
+		};
+
 		// ======================== RMP ==============================
 		// ===========================================================
 
@@ -178,7 +192,11 @@
 
 			// getters
 			getSpawnTime:getSpawnTime,
-			playerInvuTime:playerInvuTime
+
+			getPlayerLives:getPlayerLives,
+			playerInvuTime:playerInvuTime,
+
+			isGameOver:isGameOver
 		};
 
 	})();

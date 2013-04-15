@@ -83,6 +83,7 @@
 
 	// The main Game Loop
 	function gameLoop(){
+
 		requestAnimFrame(gameLoop);
 
 		// update delta time
@@ -97,11 +98,13 @@
 		// clear the screen
 		g.draw.Clear(g.ctx);
 
-		// Make the update call
-		updateCall();
+		if(!g.state.isGameOver()){
+			// Make the update call
+			updateCall();
 
-		// make the draw call
-		drawCall();
+			// make the draw call
+			drawCall();
+		}
 	};
 
 	// the update call

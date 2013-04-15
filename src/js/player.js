@@ -84,6 +84,8 @@
 			// Blinking section if the player cannot be hit
 			if(!playerCanBeHit){
 
+				g.domui.showPlayerLives(g.state.getPlayerLives());
+
 				if(drawPlayer){
 					setTimeout(function(){
 						drawPlayer = false;
@@ -96,6 +98,7 @@
 				}
 			}
 			else{
+				g.domui.hidePlayerLives();
 				drawPlayer = true;
 			}
 		};

@@ -42,6 +42,14 @@ body{
 	font-size:30px;
 }
 
+#player-lives-message {
+	display:none;
+	position:absolute;
+	top:150px;
+	left:140px;
+	font-size:30px;
+}
+
 #credits{
 	font-size:7px;
 	text-align: center;
