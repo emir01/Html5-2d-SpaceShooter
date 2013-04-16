@@ -2,99 +2,128 @@
 // like keepint track of scores, player lives and etc..
 (function(g){
 	g.state = (function(){
+
 		// ================= Inner constructor functions ============
 		// ==========================================================
 
 		// ======================== Properties =======================
 		// ===========================================================
 
-		// The number of player lives
+		// The current state of the players remaining lives
 		var playerLives;
 
-		// The number
+		// The current state of the players score
 		var score;
 
-		// the initial wave number
+		// The current state for the wave counter.
 		var wave; 
 
-		// Number of enemies in initial enemy wave
+		// The current state of the enemy count based on the wave state
+		// Each wave will have an increasing number of enemies to be killed
+		// to advance to the next wave
 		var enemiesInWave;
 
-		// the starting enemy spawn time in seconds used by the spawner
-		// in seconds
+		// The current state of the enemy spawn timer factor, which increased
+		// based on the current wave
 		var enemySpawnTime;
 
-		// When did the player start to play
+		// Flag used to determine when did the player start the current game session.
+		// Used to control and display the elapsed time
 		var startPlayTime;
 
-		// number of milliseconds the player is invurnerable
-		// after he is hit
+		// Flag control variable for the number of milliseconds the player will be invurnerable on game start
+		// and each time he looses a life
 		var playerInvuTime = 5000;
 
-		// indicator if the game is over
+		// Simple Flag controlling if the game is in the game over state.
+		// NOTE NOTE NOTE !!!! Should refactor to an "enum" type of state control, with multiple states
+		// once Screens/Menus/Pause/Instruction options are added
 		var gameOver = false;
 
 		// ======================== Public Functions =================
 		// ===========================================================
 
-		// start/restart state tracking by seting initial state properties
+		/*
+			Resets the game state tracking. Used on game initializatino to initially set all the properties
+			and on game restarts to revert to the original starting state
+		*/
+
 		var setState = function(){
-			resetStateProperties();
-			resetModules();
 			
-			resetClock()
-			g.emanager.reset();
+			resetStateProperties();
+			
+			resetClock();
 		};
 
-		// the main state manager update call
+		/*
+			As the State is an "entitiy" like object that gets updated on each "frame"
+			it has an update call which can be called from the main game loop.
+		*/
+
 		var update = function(){
 			setTimeElapsed();
 		};
 
-		// the main state manager draw call
+		/*
+			The state objects draw method, which is not actually implemented as state does not
+			have anything to draw
+		*/
+
 		var draw = function(ctx){
 
 		};
 
-		// Update the players score by currently a fix ammount of 10
+		/*
+			Notifies state that an enemy has been destroyed and that it should properly update
+			progress state information: score and wave counters.
+		*/
+
 		var enemyDestroyed = function(){
 			setPlayerScore();
 			checkWaveCounters();
 		};
 
 		/*
-			Update the player lives
+			Notifies state that the player has been hit. State will update player lives and check for game over condition
+			as well as update UI elements
 		*/
 
 		var playerHit = function(){
 			playerLives--; 
+			g.domui.setPlayerLives(playerLives);
 
 			if(playerLives == 0){
 				gameOver = true;
 			}
-
-			g.domui.setPlayerLives(playerLives);
-		}
+		};
 
 		// ======================== Private Functions =================
 		// ============================================================
 
-		// helper function that resets state properties
+		/*
+			Reset state properties both internally and updates the UI using the DOM UI control.
+			Resets only properties that control game state and game variables.
+		*/
+
 		var resetStateProperties = function(){
-			// player state properties
+			
+			// Player state properties reset
 			playerLives = 3;
 			g.domui.setPlayerLives(playerLives);
 
+			// Score state properties reset
 			score = 0;
 			g.domui.setPlayerScore(score);
 
-			// spawner state properties
+			// Spawner state properties
 			wave = 1;
 			g.domui.setWave(1);
 			
+			// Wave counter properties reset
 			enemiesInWave = 10;
 			g.domui.setEnemiesLeft(enemiesInWave);
 
+			// Miscelenious state property resets and initialization
 			enemySpawnTime = 0.5;
 
 			playerInvuTime = 5000;
@@ -102,20 +131,19 @@
 			gameOver = false;
 		};
 
-		// helper function that resets modules like entitiy managers
-		// and the actual player
-		var resetModules = function(){
-			g.emanager.reset();
+		/*
+			Reset the starting time clock used to track time from last game start
+		*/
 
-			g.player.reset();
-		};
-
-		// Reset the starting time clock
 		var resetClock = function(){
 			startPlayTime  = new Date();
 		};
 
-		// Calculate elapsed time and set the gui
+		/* 
+			Calculates the elapsed time from the last time the player started or reset the game.
+			Called from the state update call it will as well set the dom UI to display the correct time.
+		*/
+
 		var setTimeElapsed = function(){
 			var now = new Date();
 
@@ -137,13 +165,24 @@
 			g.domui.setTimeElapsed(timeString);
 		};
 
-		// Update the inner player score and update the ui
+
+		/*
+	 		Updates the player score. Usually called each time and enemy is detroyed.
+	 		The new score is updated on the dom UI 
+		*/
+
 		var setPlayerScore = function(){
 			score = score + (wave * 10);
 			g.domui.setPlayerScore(score);
 		};
 
-		// Check if we need to start a new wave if enough enemies have been destroyed
+		/*
+			Check if we need to start a new wave based on the wave counters. If so wave information is updated both 
+			internally and on the dom UI.
+
+			On wave change the spawner is notified to start spawning with the updated spawn information
+		*/
+		
 		var checkWaveCounters = function(){
 			enemiesInWave --;
 			g.domui.setEnemiesLeft(enemiesInWave);
@@ -161,8 +200,10 @@
 			}
 		};
 
-		// ======================== Accessors ========================
-		// ========= Because of javascript closures we use gets ======
+		// ======================== Accessors =========================================
+		// Because of issues with javascript closures we use functions
+		// to access internal properties 
+
 		var getSpawnTime = function(){
 			return enemySpawnTime;
 		};
