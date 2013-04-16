@@ -4,7 +4,9 @@
 
 	// setup the key binding
 	g.input.keys = {
+		37:"left",
 		65:"left",
+		39:"right",
 		68:"right",
 		87:"up",
 		83:"down",
