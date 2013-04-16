@@ -35,7 +35,12 @@
 
 		// used to clear/restart the game clearing up all the entities
 		var reset = function(){
+			for (var i = entities.length - 1; i >= 0; i--) {
+				var entitiy = entities[i];
+				delete entitiy;
+			};
 
+			entities = [];
 		};
 
 		// Iterate and draw all the entities managed by the 

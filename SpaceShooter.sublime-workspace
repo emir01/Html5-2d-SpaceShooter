@@ -3,10 +3,30 @@
 	{
 		"selected_items":
 		[
+			[
+				"show",
+				"showGameOverOverlay"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "src/default.html",
+			"settings":
+			{
+				"buffer_size": 3192,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/js/state.js",
+			"settings":
+			{
+				"buffer_size": 4659,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -52,6 +72,13 @@
 	},
 	"file_history":
 	[
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/domui.js",
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/css/main.css",
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/spawner.js",
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/main.js",
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/player.js",
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/state.js",
+		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/default.html",
 		"/C/Users/Emir/Desktop/Python/LPTHW/Ex5/ex5.py",
 		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/Modules/FileUploadModule.less",
 		"/F/Projects/Github/Tagedit/index.html",
@@ -78,6 +105,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"};\n",
+			"getPlayerScore",
+			"showGameOverOverlay",
+			"isgameover",
+			"isgameove",
+			"showPlayerLives",
+			"playerLives",
 			"fn",
 			"Fn",
 			"fn",
@@ -145,6 +179,66 @@
 			"sheets":
 			[
 			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/default.html",
+					"settings":
+					{
+						"buffer_size": 3192,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								905,
+								920
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 417.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/js/state.js",
+					"settings":
+					{
+						"buffer_size": 4659,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3982,
+								3982
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3265.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
 		}
 	],
 	"incremental_find":
@@ -164,11 +258,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -188,6 +289,46 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"spawn",
+				"Html5-2d-SpaceShooter/src/js/spawner.js"
+			],
+			[
+				"state",
+				"Html5-2d-SpaceShooter/src/js/state.js"
+			],
+			[
+				"defa",
+				"Html5-2d-SpaceShooter/src/default.html"
+			],
+			[
+				"domui",
+				"Html5-2d-SpaceShooter/src/js/domui.js"
+			],
+			[
+				"main",
+				"Html5-2d-SpaceShooter/src/js/main.js"
+			],
+			[
+				"domu",
+				"Html5-2d-SpaceShooter/src/js/domui.js"
+			],
+			[
+				"palyer",
+				"Html5-2d-SpaceShooter/src/js/player.js"
+			],
+			[
+				"css",
+				"Html5-2d-SpaceShooter/src/css/main.css"
+			],
+			[
+				"defau",
+				"Html5-2d-SpaceShooter/src/default.html"
+			],
+			[
+				"dom",
+				"Html5-2d-SpaceShooter/src/js/domui.js"
+			],
 			[
 				"fileuploadmo",
 				"DSS.Presentation/DSS.Presentation.Web/Content/less/Modules/FileUploadModule.less"
@@ -230,7 +371,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 219.0,
 	"status_bar_visible": true
 }

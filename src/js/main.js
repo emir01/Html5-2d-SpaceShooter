@@ -59,13 +59,15 @@
 		// remove the "loading screen"
 		$("#main-loading").hide();
 
+		// initialize dom ui
+		g.domui.initDomUI(resetGame);
+
 		// start the background music
 		//g.assets.backgroundMusic.loop().play().fadeIn();
 
 		g.background.setupBackground();
 
-		// start by the initial state
-		g.state.setState();
+		resetGame();
 
 		// init the enemy spawner
 		g.spawner.start();
@@ -79,6 +81,32 @@
 
 		// start the game loop
 		gameLoop();
+	};
+
+	function resetGame (){
+		g.dbg.log("Reseting Game");
+
+		// reset state
+		g.state.setState();
+
+		// Clears any dom overlays
+		g.domui.clearOverlays();
+
+		// show the lives remaining
+		g.domui.showPlayerLives(g.state.getPlayerLives());
+
+		// make player changes
+		g.player.reset();
+		g.player.setPlayerHittable(false);
+
+		// make emanage changes
+		g.emanager.reset();
+
+		setTimeout(function(){
+			g.player.setPlayerHittable(true);		
+			g.domui.hidePlayerLives();	
+		},g.state.playerInvuTime);
+
 	};
 
 	// The main Game Loop

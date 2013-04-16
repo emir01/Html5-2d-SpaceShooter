@@ -12,13 +12,22 @@
 		// ===========================================================
 
 		/*
-			Make
+			Initialize the dom ui, linkin al lthe related events to the passed in 
+			event handlers
 		*/
 
 		var initDomUI = function(resetGameHandler){
 			$("#tryagain-button").click(function(){
-				resetgamehandler();
-			})
+				resetGameHandler();
+			});
+
+			$("#restart-button").click(function(){
+				resetGameHandler();
+			});
+		};
+
+		var clearOverlays = function(){
+			hideGameOverOverlay();
 		};
 
 		// Update the player score on the dom ui
@@ -96,6 +105,11 @@
 		// ===========================================================
 
 		return {
+
+			// basic domui initialization
+			initDomUI:initDomUI,
+			clearOverlays:clearOverlays,
+
 			setPlayerLives:setPlayerLives,
 			setPlayerScore:setPlayerScore,
 			setWave:setWave,

@@ -44,7 +44,6 @@
 		*/
 
 		var playerHit = function(){
-
 			if(playerCanBeHit){
 				reset();
 
@@ -144,6 +143,10 @@
 			return playerCanBeHit;
 		};
 
+		var setPlayerHittable = function(state){
+			playerCanBeHit = state;
+		};
+
 		// draw the player on the given canvas context
 		var draw = function(ctx){
 
@@ -199,11 +202,16 @@
 			y:y,
 			w:width,
 			h:height,
+
 			reset:reset,
 			update:update,
 			draw:draw,
+
 			getBoundingBox:getBoundingBox,
+
 			playerIsHittable:playerIsHittable,
+			setPlayerHittable:setPlayerHittable,
+
 			playerHit:playerHit
 		};
 	})();

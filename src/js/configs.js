@@ -16,7 +16,7 @@
 			for the entities being drawn
 		*/
 
-		var drawBoundingBoxes = true;
+		var drawBoundingBoxes = false;
 
 		return {
 			soundEnabled:soundsEnabled,
