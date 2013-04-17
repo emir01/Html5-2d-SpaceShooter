@@ -1,5 +1,12 @@
-// State is one of the main, if not the main, module that handles game state
-// like keepint track of scores, player lives and etc..
+/*	
+
+	The state entitiy is used to control game state and the game flow. It contains properties
+	and variables used during gameplay, by the other modules, and are at the same
+	time displayed on the interface.
+
+	State will also control general game state and the current "screen" beeing displayed
+*/
+
 (function(g){
 	g.state = (function(){
 
@@ -165,7 +172,6 @@
 			g.domui.setTimeElapsed(timeString);
 		};
 
-
 		/*
 	 		Updates the player score. Usually called each time and enemy is detroyed.
 	 		The new score is updated on the dom UI 
@@ -195,30 +201,49 @@
 				g.domui.setEnemiesLeft(enemiesInWave);
 
 				enemySpawnTime -= 0.05;
-
-				g.spawner.startNextWave();
 			}
 		};
 
-		// ======================== Accessors =========================================
+		// ======================== Accessors =========================
 		// Because of issues with javascript closures we use functions
 		// to access internal properties 
+
+		/*
+			Returns the current state of the enemy spawn time variable
+		*/	
 
 		var getSpawnTime = function(){
 			return enemySpawnTime;
 		};
 
+		/*
+			Gets the current state of the player lives variable
+		*/	
+
 		var getPlayerLives = function(){
 			return playerLives;
 		};
+
+		/*
+			Gets the current state of the score variable
+		*/
 
 		var getPlayerScore = function(){
 			return score;
 		};
 
+		/*
+			Get the state of the current wave.
+		*/
+
 		var getCurrentWave = function(){
 			return wave;
 		};
+
+		/*
+			Get the state of the is game over variable. This is currently used in the main game loop
+			to determine when to switch states and display the game over screen
+		*/
 
 		var isGameOver = function(){
 			return gameOver;
@@ -228,25 +253,23 @@
 		// ===========================================================
 
 		return {
-			// init
+			// Initialization properties
 			setState:setState,
 
-			// main loop
+			// Main loop related properties
 			update:update,
 			draw:draw,
 
-			//setters
+			// Setting functions that alter state
 			enemyDestroyed:enemyDestroyed,
 			playerHit:playerHit,
 
-			// getters
+			// Getting functions that query state
 			getSpawnTime:getSpawnTime,
-
 			getPlayerLives:getPlayerLives,
 			getPlayerScore:getPlayerScore,
 			getCurrentWave:getCurrentWave,
 			playerInvuTime:playerInvuTime,
-
 			isGameOver:isGameOver
 		};
 

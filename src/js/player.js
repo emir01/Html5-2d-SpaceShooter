@@ -1,34 +1,50 @@
-// Defines the main player object
+/*
+	Defines the main player object and functionality used to control the player ship. 
+
+	The player code is ideal for implementing the RMP from the MODULE_TEMPLATE file, but is one of the earliest written files,
+	and it does not really adhere to the organization, though in a way it does implement RMP
+*/
+
 (function (g) {
 	g.player =  (function(){
-		// player coordinates
+
+		/*
+			Basic player properties and inner player state variables
+		*/
+
 		var x = 100;
 		var y = 100;
 
-		// player properties
 		var speed = 0.5;
 
-		// player dimensions
 		var width = 50;
 		var height = 50;
 
-		// The current active player image to be drawn
-		// depending on the player movement
-		var activeImage;
-
-		// keep track of player projectiles
-		var projectiles = [];
-
-		// Player can be destroyed
+		// Flag internally controlling if the player can be hit, that is if he is currently invurnerable to enemy ships 
+		// and projectiles
 		var playerCanBeHit = true;
 
-		// flag for actually drawing the player, which can be used 
-		// to implement blinking
+		// Internal draw flag used to implement the blinking while the player is invulnerable
 		var drawPlayer = true;
 
-		// player functions : 
+		/*
+			The current active player image to be drawn
+			depending on the player movement. This will be changed as the player moved to the left or the the right
+		*/
+		var activeImage;
 
-		// the initial player load function
+		/*
+			====================================================================================
+			Basic player functions and methods. Public functions thnat are accessible from 
+			the main game loop and other modules
+			====================================================================================
+		*/
+
+		/*	
+			The initial player load function that resets some of the player inner variables
+			for both position and state.
+		*/
+
 		var reset = function () {
 			activeImage = g.assets.player;
 
@@ -40,26 +56,40 @@
 		};
 
 		/*
-			The player has been hit, his position will have to be reset and state set accordingly
+			The player has been hit, his position will have to be reset and state set accordingly.
+			Should be called from outside modules that handle collisions and detect when the player is hit.
 		*/
 
 		var playerHit = function(){
+			// We are going to check if the player can initially be hit and if so
+			// reset player internal tracking variables and update State
 			if(playerCanBeHit){
 				reset();
 
 				g.state.playerHit();
 
+				// We set the can be hit flag to false and setup a timeout call
+				// that will revert it for the given State defined time. For the 
+				// next period the player will be invurnerable
 				playerCanBeHit = false;
-
 				setTimeout(function(){
 					playerCanBeHit = true;
 				}, g.state.playerInvuTime);
 			}
-
 		};
 
-		// update the player state based on pressed keys
+		/*
+			The update method is called from the main game loop and allows the player entitiy to process what is going on with the game
+			and the input and update internal tracking variables accordingly.
+
+			Its main use is to check for input on the game controls and update player ship position and actions.
+
+			Update will also handle the visual blinking when the ship cannot be hit by updating an itnernal drawPlayer variable
+			which is then used in the draw function to switch drawing visibility.
+		*/
+		
 		var update = function(){
+			// Get key states and update player accorindg to input
 			var keyStates = g.input.keyState;
 
 			if(keyStates["left"]){
@@ -75,6 +105,8 @@
 				activeImage = g.assets.player;
 			}
 
+			// If the fire binding was pressed and released indicating
+			// a full key action.
 			if(g.input.wasKeyFull("fire")){
 				fireLaserSound();
 				playerFireWeapon();
@@ -103,11 +135,26 @@
 		};
 
 		/*
+			The 
+		*/	
+		var draw = function(ctx){
+
+			if(drawPlayer){
+				g.draw.DrawImage(ctx, activeImage, x, y);
+
+				if(g.config.drawBoundingBoxes){
+					g.draw.BoundingBox(ctx,getBoundingBox());
+				}
+			}
+		};
+
+		/*
 			Return a player bounding box. We are going to be returning a collection of bounding boxes,
-			to make the collision more complex
+			to make the collision more accurate for the player entitiy
 
 			The multiple values are manually calculated from the sprites for the enemy and players
 		*/
+
 		var getBoundingBox = function() {
 
 			var boundingBoxCollection = [];
@@ -139,24 +186,28 @@
 			return boundingBoxCollection;
 		};
 
+		/*
+			====================================================================================
+			Getter and setter functions that return/manage/edit internally tracked palyer state properties
+			====================================================================================
+		*/
+
+		/*
+			Returns the current state of the playerCanBeHit property
+		*/
+
 		var playerIsHittable = function(){
 			return playerCanBeHit;
 		};
 
+		/*
+			Sets the player hittable properties. This would allow outer modules to alter the player hittable state.
+			Notably used from higher level modules when controling major game flow. Resetting the game and decreasing player lives
+			are examples of such actions
+		*/
+
 		var setPlayerHittable = function(state){
 			playerCanBeHit = state;
-		};
-
-		// draw the player on the given canvas context
-		var draw = function(ctx){
-
-			if(drawPlayer){
-				g.draw.DrawImage(ctx, activeImage, x, y);
-
-				if(g.config.drawBoundingBoxes){
-					g.draw.BoundingBox(ctx,getBoundingBox());
-				}
-			}
 		};
 
 		// ========================== PRIVATE FUNCTIONS ==========================
@@ -198,20 +249,26 @@
 		};
 
 		return {
+
+			// Basic player properties and methods
 			x:x,
 			y:y,
 			w:width,
 			h:height,
+			getBoundingBox:getBoundingBox,
 
+			// Initialization and reset methods
 			reset:reset,
+
+			// Main game loop player methods
 			update:update,
 			draw:draw,
 
-			getBoundingBox:getBoundingBox,
-
+			// Utility player getter functions
 			playerIsHittable:playerIsHittable,
 			setPlayerHittable:setPlayerHittable,
 
+			// Player state methods, that are related with the game state.
 			playerHit:playerHit
 		};
 	})();

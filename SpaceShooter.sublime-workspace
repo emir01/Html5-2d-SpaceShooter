@@ -4,8 +4,28 @@
 		"selected_items":
 		[
 			[
-				"show",
-				"showGameOverOverlay"
+				"setplayer",
+				"setPlayerLives"
+			],
+			[
+				"bounding",
+				"boundingBox"
+			],
+			[
+				"enem",
+				"enemybb"
+			],
+			[
+				"bound",
+				"boundingBoxCollection"
+			],
+			[
+				"boundb",
+				"boundingBoxHull"
+			],
+			[
+				"get",
+				"getBoundingBox"
 			]
 		]
 	},
@@ -15,15 +35,39 @@
 			"file": "src/js/state.js",
 			"settings":
 			{
-				"buffer_size": 6290,
+				"buffer_size": 6924,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/js/main.js",
+			"file": "src/js/spawner.js",
 			"settings":
 			{
-				"buffer_size": 4521,
+				"buffer_size": 3849,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/js/MODULE_TEMPLATE.js",
+			"settings":
+			{
+				"buffer_size": 963,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/js/projectile.js",
+			"settings":
+			{
+				"buffer_size": 2892,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/js/player.js",
+			"settings":
+			{
+				"buffer_size": 7249,
 				"line_ending": "Windows"
 			}
 		}
@@ -31,7 +75,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -72,17 +116,21 @@
 	},
 	"file_history":
 	[
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/domui.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/input.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/state.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/main.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/default.html",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/emanager.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/player.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/debug.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/configs.js",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/css/main.css",
-		"/C/Users/EMIR/Documents/GitHub/Html5-2d-SpaceShooter/src/js/spawner.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/css/main.css",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/emanager.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/state.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/player.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/domui.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/default.html",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/main.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/particle.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/spawner.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/debug.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/projectile.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/draw.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs",
 		"/C/Users/Emir/Desktop/Python/LPTHW/Ex5/ex5.py",
 		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/Modules/FileUploadModule.less",
 		"/F/Projects/Github/Tagedit/index.html",
@@ -109,29 +157,29 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"checkWaveCounters",
-			"resetClock",
-			"resetModules",
-			"resetGame",
-			"resetModules",
-			"startPlayTime",
-			";\n",
-			"initDomUI",
+			"projectiles",
+			"startNextWave",
+			"spawnEnemy",
+			"hit",
+			"update",
+			"getBoundingBox",
+			"checkCollisionWithPlayer",
+			"setPlayerLives",
+			"enemyDestroyed",
+			"setPlayerScore",
+			"ui",
+			"draw",
+			"setTimeElapsed",
+			"update",
 			"reset",
-			"playerInvuTime",
-			"playerIsHittable",
-			"playerHit",
-			"playerCanBeHit",
-			"setState",
-			"showPlayerLives",
-			"initDomUI",
-			"};\n",
-			"getPlayerScore",
-			"showGameOverOverlay",
-			"isgameover",
-			"isgameove",
-			"showPlayerLives",
-			"playerLives",
+			"draw",
+			"boundingBox",
+			"Things",
+			"box",
+			"boundingBoxHull",
+			"getBoundingBox",
+			"colidedEnemy",
+			"removeCollidedEntities",
 			"fn",
 			"Fn",
 			"fn",
@@ -196,7 +244,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -204,15 +252,15 @@
 					"file": "src/js/state.js",
 					"settings":
 					{
-						"buffer_size": 6290,
+						"buffer_size": 6924,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5887,
-								5887
+								5344,
+								5344
 							]
 						],
 						"settings":
@@ -221,25 +269,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4318.0,
+						"translation.y": 2920.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/js/main.js",
+					"file": "src/js/spawner.js",
 					"settings":
 					{
-						"buffer_size": 4521,
+						"buffer_size": 3849,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2863,
-								2863
+								733,
+								733
 							]
 						],
 						"settings":
@@ -248,7 +296,88 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/js/MODULE_TEMPLATE.js",
+					"settings":
+					{
+						"buffer_size": 963,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								187,
+								187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/js/projectile.js",
+					"settings":
+					{
+						"buffer_size": 2892,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1156,
+								1156
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1347.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/js/player.js",
+					"settings":
+					{
+						"buffer_size": 7249,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5232,
+								5232
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1245.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -262,7 +391,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"layout":
 	{
@@ -298,76 +427,76 @@
 		"selected_items":
 		[
 			[
-				"main",
-				"src/js/main.js"
-			],
-			[
 				"state",
 				"src/js/state.js"
 			],
 			[
-				"input",
-				"src/js/input.js"
+				"defa",
+				"src/default.html"
 			],
 			[
-				"config",
-				"src/js/configs.js"
-			],
-			[
-				"deb",
-				"src/js/debug.js"
-			],
-			[
-				"emanag",
+				"ema",
 				"src/js/emanager.js"
-			],
-			[
-				"main.js",
-				"src/js/main.js"
 			],
 			[
 				"player",
 				"src/js/player.js"
 			],
 			[
-				"eman",
+				"enem",
+				"src/js/enemy.js"
+			],
+			[
+				"emana",
 				"src/js/emanager.js"
 			],
 			[
-				"defat",
-				"src/default.html"
+				"main",
+				"src/js/main.js"
 			],
 			[
-				"domui",
+				"stat",
+				"src/js/state.js"
+			],
+			[
+				"ui",
 				"src/js/domui.js"
 			],
 			[
-				"spawn",
-				"Html5-2d-SpaceShooter/src/js/spawner.js"
+				"parti",
+				"src/js/particle.js"
 			],
 			[
-				"defa",
-				"Html5-2d-SpaceShooter/src/default.html"
+				"emanage",
+				"src/js/emanager.js"
 			],
 			[
-				"domu",
-				"Html5-2d-SpaceShooter/src/js/domui.js"
+				"debug",
+				"src/js/debug.js"
 			],
 			[
-				"palyer",
-				"Html5-2d-SpaceShooter/src/js/player.js"
+				"enemy",
+				"src/js/enemy.js"
 			],
 			[
-				"css",
-				"Html5-2d-SpaceShooter/src/css/main.css"
+				"conf",
+				"src/js/configs.js"
+			],
+			[
+				"project",
+				"src/js/projectile.js"
+			],
+			[
+				"draw",
+				"src/js/draw.js"
+			],
+			[
+				"projec",
+				"src/js/projectile.js"
 			],
 			[
 				"defau",
-				"Html5-2d-SpaceShooter/src/default.html"
-			],
-			[
-				"dom",
-				"Html5-2d-SpaceShooter/src/js/domui.js"
+				"src/default.html"
 			],
 			[
 				"fileuploadmo",

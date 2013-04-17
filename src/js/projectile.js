@@ -1,16 +1,26 @@
-// we can create multiple projectile so we are going to 
-// make the projectile a constructor function with prototype calls
-(function (g){
+/*
+	Code file for the projectile entitiy, that is used to draw/update projectiles for both enemies and the player.
 
-	// the projectile constructor function that creates projectiles and handles
-	// projectile animation and updates
-	// params : 
-	// 			- img,       the sprite used to draw the projectile
-	// 			- x,         projectile x coordinate
-	// 			- y,         projectile y coordinate
-	// 			- speed,     projectie speed factor
-	// 			- direction, projectile travel direction ( up, down)
-	// 			- isEnemy,   is the projectile an enemy projectile
+	Currently only used for player projectiles.
+
+	As we need more that one projectile, contrary to spawner and entitiy manager modules, we will be creating
+	a constructor function and prototype method definition. This will allow us to create more that one projectile
+
+*/
+
+(function (g){
+	/* 
+		The projectile constructor function that creates projectiles and handles
+	 	projectile animation and updates
+	 	params : 
+	 			- img,       the sprite used to draw the projectile
+	 			- x,         projectile x coordinate
+	 			- y,         projectile y coordinate
+	 			- speed,     projectie speed factor
+	 			- direction, projectile travel direction ( up, down)
+	 			- isEnemy,   is the projectile an enemy projectile
+	*/
+
 	var projectile = function(img, x, y, speed, direction, isEnemy){
 		this.image = img;
 		this.x = x || 0;
@@ -19,24 +29,36 @@
 		this.direction = direction || 1;
 		this.isEnemy = isEnemy || true;
 
-		// so the entitiy manger knows this object is of type projectile
+		// The Entitiy manager will know this object is of type projectile
 		this.type = "projectile";
 	};
 
-	// specify the prototype
+	/*
+		Specify the basic prototype object
+	*/
+
 	projectile.prototype = {};
 
-	// the projectile class update function
+	/*
+		The projectile update function that currently only moves the projectile vertically up  the screen
+	*/
+
 	projectile.prototype.update = function(){
 		this.y += this.direction * (this.speed * g.dt);
 	};
 
-	// the projectile class draw function
+	/*
+		The projectile class draw function that simply draws the projectile image.
+	*/
+
 	projectile.prototype.draw = function(ctx){
 		g.draw.DrawImage(ctx, this.image, this.x, this.y);
 	};
 
-	// returns true if the projectile is off the canvas
+	/*
+		Returns true if the projectile is off the canvas. If it is off the screen the entitiy manager will remove the projectile
+		improving performance
+	*/ 
 	projectile.prototype.isOffScreen = function(){
 		var y = this.y;
 		var imageHeight = this.image.height;
@@ -58,7 +80,10 @@
 		}
 	};
 
-	// Return a bounding box for the projectile
+	/*
+		Return a bounding box for the projectile, used in collision calculations in the entitiy manager code
+	*/
+
 	projectile.prototype.getBoundingBox = function(){
 		var boundingBox = {};
 
@@ -71,7 +96,10 @@
 		return boundingBox;
 	};
 
-	// namespace the projectile under the game namespace
+	/*
+		Namespace the projectile under the game namespace. We can then use "new g.projectile(params)" to create and add new projectiles
+		to the entitiy manager
+	*/
 	g.projectile = projectile;
 
 })(window.game = window.game || {});
