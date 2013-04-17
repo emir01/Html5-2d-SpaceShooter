@@ -57,26 +57,37 @@
 			this.speed = speed;
 		};
 
-		// ---- Setup the sprite particle prototype
 
+		// Setup the sprite particle prototype base object
 		spriteParticleSystem.prototype = {};
 
-		// The sprite particle system update function that updates 
-		// the sprite frame and timer information.
+		/*
+			The update call will just update the current frame for the sprite particle system.
+			This allows the sprite to advance to the next image.
+		*/
+
 		spriteParticleSystem.prototype.update = function(){
 			// update the frame for the sprite particle
 			this.currentFrame++;
 		};
 
-		// Check if the sprite system should die and be killed by the
-		// sprite system manager
+		/*
+			Check if the sprite system should die and be killed by the
+			sprite system manager. 
+
+			The sprite p. system is prepared to be removed when the last frame has been reached and drawn
+		*/
+		
 		spriteParticleSystem.prototype.shouldDie = function(){
-			// we are going to kill the sprite particle system on the "last frame"
 			return this.currentFrame == this.totalFrames;
 		};
- 
-		// The sprite particle system draw function 
-		// that draws the simple particle system
+
+		/*
+		 	The sprite particle system draw function 
+			that draws the simple particle system frame by frame on each game loop as directed
+			by the particle manager
+		*/
+ 	
 		spriteParticleSystem.prototype.draw = function(ctx){
 			// draw the current frame in the sprite 
 			// use the native canvas draw image to handle sprite cutout
@@ -105,17 +116,23 @@
 			);
 		};
 
-		// ======================== Properties =======================
-		// ===========================================================
-
-		// keeps track of all the particle systems 
-		// in the particle system manage
+		/*
+			======================== Properties =======================	
+			Contains the basic particle manager properties.
+		*/
+		
+		// Keeps track of all the particle systems  that have been initialized and are active
 		var particleSystems = [];
 
-		// ======================== Public Functions =================
-		// ===========================================================
+		/*
+			======================== Public Functions =================
+		*/
 
-		// the main update function for the particle system manager
+		/*
+			The main update function for the particle manager that is called from the main game loop.
+			The particle manager will iterate and allow each individual particle system to update itself	
+		*/
+
 		var update = function(ctx){
 
 			// go through all the particle systems and their update calls
@@ -133,7 +150,11 @@
 			}
 		};
 
-		// the main draw function for the particle system manager
+		/*
+			The main draw function for the particle system manager. Iterate through all the managed
+			particle systems and allow each one to draw itself using the provided canvas context
+		*/
+
 		var draw = function(ctx){
 			
 			// go through all the particle systems and their draw calls
@@ -143,8 +164,11 @@
 			}
 		};
 
-		//	 Create an enemy explosion particle effect at the given coordinates
-
+		/*
+			 Instructs the particle system manager  to create a enemy explosion particle system.
+			 The enemy explosion is implemented via a sprite particle system and after creation is added
+			 to the particle system managers collection. 
+		*/
 		var enemyExplosion = function(x, y, w, h){
 
 			//create an sprite entitiy system
@@ -175,8 +199,11 @@
 		// ===========================================================
 
 		return {
+			// The main game loop functions
 			update:update,
 			draw:draw,
+
+			// Particle System creation specific utility function
 			enemyExplosion:enemyExplosion
 		};
 

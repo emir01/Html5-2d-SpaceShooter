@@ -1,4 +1,6 @@
-// The user input processing module
+/*
+	The main 
+*/
 (function (g) {
 	g.input = {};
 
