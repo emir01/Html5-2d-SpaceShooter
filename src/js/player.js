@@ -20,6 +20,10 @@
 		var width = 50;
 		var height = 50;
 
+		// control how much will the player appear on the opposite side when 
+		// exiting from the left or right.
+		var teleportMargin = 25;
+
 		// Flag internally controlling if the player can be hit, that is if he is currently invurnerable to enemy ships 
 		// and projectiles
 		var playerCanBeHit = true;
@@ -92,13 +96,32 @@
 			// Get key states and update player accorindg to input
 			var keyStates = g.input.keyState;
 
+			var canvasWidth = g.canvas.width;
+
+			g.dbg.log("Canvas Width " + canvasWidth);
+
 			if(keyStates["left"]){
 				x -= speed * g.dt;
 				activeImage = g.assets.playerLeft;
+
+				// we need to determine if the player went fully of screen to the 
+				// left side, and if so move him to appear on the right side of the screen.
+
+				if(x <= 0 - width){
+					// subtract the five so it becomes more visible on the right side.
+					x = canvasWidth - teleportMargin;
+				}
+
 			}
 			else if(keyStates["right"]){
 				x += speed * g.dt;
 				activeImage = g.assets.playerRight;
+
+				// same as when going to the left, we are checking if the player
+				// moved out of the screen on the right side.
+				if(x >= canvasWidth){
+					x = (0 - width) + teleportMargin;
+				}
 			}
 			else{
 				// if we dont move
