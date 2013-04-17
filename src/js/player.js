@@ -135,8 +135,10 @@
 		};
 
 		/*
-			The 
+			The main player entity draw function that is reposinbie for displaying the player
+			ship sprite on the canvas
 		*/	
+
 		var draw = function(ctx){
 
 			if(drawPlayer){
@@ -210,10 +212,40 @@
 			playerCanBeHit = state;
 		};
 
-		// ========================== PRIVATE FUNCTIONS ==========================
+		/*
+			========================== PRIVATE FUNCTIONS ==========================
 
-		// Fire tghe laser sound using multiple buzz audio objects
-		// Should be better optimized later on
+			Containing internal player functions and utilities called upon from the rest
+			of the player functionality.
+		*/
+
+		/*	
+			Handles the palyers fire projectile functionality by creating a projectile
+			entitiy that is then added and handled by the projectile manager.
+		*/
+		var playerFireWeapon = function(){
+			
+			// create a projectile
+			var projectile  = new g.projectile(
+				g.assets.laserGreen, // projectile image
+				(x + width / 2) - (g.assets.laserGreen.width/2), // projectile x
+				y - g.assets.laserGreen.height, // projectile y
+				0.5, // projectile speed
+				-1,
+				false
+			);	
+
+			// Add the projectile to the entitiy manager
+			g.emanager.addEntity(projectile);
+		};
+
+		/*
+			Fires the laser sound on each player fire action. The function is schecking
+			and using multiple sound assets to cope with the players multiple spacebar
+			mashing. 
+
+			With one sound the firing was choppy and cut off
+		*/
 		var fireLaserSound = function(){
 			if(g.config.soundEnabled){
 				if(g.assets.soundLaser1.isEnded() || g.assets.soundLaser1.isPaused()){
@@ -231,23 +263,7 @@
 			}
 		};
 
-		// handle player fire functionality.
-		var playerFireWeapon = function(){
-			
-			// create a projectile
-			var projectile  = new g.projectile(
-				g.assets.laserGreen, // projectile image
-				(x + width / 2) - (g.assets.laserGreen.width/2), // projectile x
-				y - g.assets.laserGreen.height, // projectile y
-				0.5, // projectile speed
-				-1,
-				false
-			);	
-
-			// Add the projectile to the entitiy manager
-			g.emanager.addEntity(projectile);
-		};
-
+	
 		return {
 
 			// Basic player properties and methods
@@ -272,5 +288,4 @@
 			playerHit:playerHit
 		};
 	})();
-
 })(window.game = window.game || {});

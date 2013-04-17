@@ -1,15 +1,33 @@
-// Simple quasi particle system manager that handles displaying "particle" related entiteis
-// like explosions and engine traisl and etc
+/*
+	Simple quasi particle system manager that handles displaying "particle" related entiteis
+    like explosions, engine trails and so on.
+
+    The particle manager defines and is capable of handling the processing and drawing for 
+    a given particle system.
+*/	
+
 (function(g){
 	g.particle = (function(){
-		// ================= Inner constructor functions ============
-		// ==========================================================
+		
+		/*	
+		    Inner particle constructor functions
+			==========================================================
 
-		// The simplest particle system containing a sprite that gets
-		// draw and fakes a real particle system.
-		//---
-		// Handles grid ordered sprite sheets.
-		// w and h are defined to help create an x, y offset by on the provided dimension
+			The following constructor and prototype functions are used to define the functionality
+			for a series of particle system that can be handled by the Particle Manager (g.particle)
+
+			Currently we only define a simple spriteParticle system that is based on sprite images and
+			that is further documented bellow.
+		*/
+
+		/*
+			The simplest particle system containing a sprite that gets
+			draw and fakes a real particle system.
+			
+			Handles grid ordered sprite sheets.
+			w and h are defined to help create an x, y offset by on the provided dimensions
+		*/
+		
 		var spriteParticleSystem = function(x, y, img, rowCount, columnCount, speed, w, h){
 			this.x = x;
 			this.y = y;
