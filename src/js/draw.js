@@ -1,20 +1,46 @@
+/*
+	The draw module is responsible for abstracting canvas specific draw calls.
+
+	It is heavily used to hide way the drawing of the images for the major entities in the game
+	among which are the palyer, doodads and enemy ships.
+
+	Draw is probably the first written functionality besides initialization/testing/main game code
+	as it was initially used to test canvas interaction
+*/
+
 (function(g){
 	g.draw = (function() {
-		// ===================== Properties =======================
-		// =========================================================
+		/*
+			 ===================== Properties =======================
+		*/
+		
+		/*
+			Pi value in radians? Used in rotation calculations
+		*/
 
 		var TO_RADIANS = Math.PI/180; 
 
-		// ================== Public Functions =====================
-		// =========================================================
+		/*
+			================== Public Functions =====================
+		*/ 
+		
+		/*
+			Clear the context with the specific fill style
+		*/
 
-		// clear a given context
 		var clear  = function(ctx){
 			ctx.fillStyle = "#5E3F6B";
 			ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		};
 
-		// draw a rectangle on the context
+		/*
+			Draws a simple rectangle at the given x and y coordinates with the given
+			width and height properties.
+
+			The fill style is fixed, meaning probably its not used from outside code
+			and was a initall test draw function for the canva.
+		*/
+
 		var rect = function(ctx, x, y, w, h){
 			ctx.fillStyle = "#FFF";
 			
@@ -38,9 +64,9 @@
 		};
 
 		/*
-			
-			Draw a rectangle outline
-			
+			Draw a rectangle outline at the given x and y coordinates
+			with the given width and height properties as well as a specific
+			stroke style.
 		*/
 
 		var rectOutline = function(ctx, x, y, w, h, style){
@@ -51,7 +77,16 @@
 		};
 
 		/*
-			Draws a rectangle bounding box
+			Draws a rectangle bounding box. Servers as a preprocessor for the 
+			rectOutline.
+
+			As a parameter it takes the context to which the bounding box will be drawn
+			and the actual bounding box object defined and returned by the entities
+			that have used bounding boxes:
+
+			Player,
+			Enemies,
+			Projectiles
 		*/
 
 		var  drawBoundingBox = function(ctx, boundingBox){
@@ -76,10 +111,20 @@
 			return;
 		};
 
-		// ================== Private Functions ====================
-		// =========================================================
+		/*	
+			================== Private Functions ====================
 
-		// draw a rotated image
+			What follows are private utility functions used to implement some of the public features.
+		*/
+		
+		/*
+			Draws an image on the canvas included with a given rotation angle, usefull when drawing the same sprite
+			at different rotations to give variety to assets.
+
+			Notably used when drawing the asteroid doodads. The same asteroid image is varied by drawing it 
+			at different rotation angles.
+		*/
+
 		function drawRotatedImage(context, image, x, y, angle) { 
 		 
 			// save the current co-ordinate system 
@@ -101,10 +146,20 @@
 			context.restore(); 
 		}
 
+		/*	
+			Revealing module pattern.
+		*/	
+
 		return {
+
+			// Basic functions
 			Clear:clear,
+
+			// Basic drawing functions
 			Rect: rect,
 			DrawImage:drawImage,
+
+			// Utility drawing functions
 			BoundingBox: drawBoundingBox
 		};
 	})();

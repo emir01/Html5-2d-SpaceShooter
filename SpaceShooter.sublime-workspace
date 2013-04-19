@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"canvas",
+				"canvasWidth"
+			],
+			[
 				"setplayer",
 				"setPlayerLives"
 			],
@@ -31,53 +35,17 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/js/state.js",
-			"settings":
-			{
-				"buffer_size": 6924,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/js/spawner.js",
-			"settings":
-			{
-				"buffer_size": 3849,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/js/MODULE_TEMPLATE.js",
-			"settings":
-			{
-				"buffer_size": 963,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/js/projectile.js",
-			"settings":
-			{
-				"buffer_size": 2892,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/js/player.js",
-			"settings":
-			{
-				"buffer_size": 7249,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 58.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"sql",
 				"Set Syntax: SQL"
@@ -85,10 +53,6 @@
 			[
 				"packages",
 				"Preferences: Browse Packages"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"listp",
@@ -116,19 +80,22 @@
 	},
 	"file_history":
 	[
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/css/main.css",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/input.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/draw.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/emanager.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/state.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/spawner.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/loader.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/particle.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/player.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/projectile.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/MODULE_TEMPLATE.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/css/main.css",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/domui.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/default.html",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/main.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/particle.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/spawner.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/debug.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/projectile.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/draw.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs",
 		"/C/Users/Emir/Desktop/Python/LPTHW/Ex5/ex5.py",
@@ -157,6 +124,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"keyState",
+			"false",
+			"keyState",
+			"addAudioAsset",
+			"addImageAsset",
+			"addAudioAsset",
+			"update",
+			"//",
 			"projectiles",
 			"startNextWave",
 			"spawnEnemy",
@@ -244,144 +219,8 @@
 	"groups":
 	[
 		{
-			"selected": 4,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/js/state.js",
-					"settings":
-					{
-						"buffer_size": 6924,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5344,
-								5344
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2920.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/js/spawner.js",
-					"settings":
-					{
-						"buffer_size": 3849,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								733,
-								733
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 918.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/js/MODULE_TEMPLATE.js",
-					"settings":
-					{
-						"buffer_size": 963,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								187,
-								187
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/js/projectile.js",
-					"settings":
-					{
-						"buffer_size": 2892,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1156,
-								1156
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1347.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/js/player.js",
-					"settings":
-					{
-						"buffer_size": 7249,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5232,
-								5232
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1245.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

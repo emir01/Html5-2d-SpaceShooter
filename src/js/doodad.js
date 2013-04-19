@@ -1,7 +1,22 @@
-// The inner doodad class used to represent special space
-// effects and properties and bodies like asteroids or particle effects.
-// Used by the doodad manager
+/*		
+	The inner doodad constructor function used to represent special space
+	effects and properties and bodies like asteroids or particle effects.
+	
+	The doodad entities are managed by the general entitiy manager, which 
+	calls the update and draw functions for each seperate doodad.
+
+	Doodads are generated and spawned by the doodad spawner.
+*/
+
 (function(g){
+
+	/*
+		The basic doodad constructor function that defines basic doodad properties
+		that are to be seperate for each spawned doodad.
+
+		Common functions are defined using the prototype aproach
+	*/
+
 	var doodad = function(img, x, y, speed, direction, rotation, doesDamage){
 		this.image = img;
 		this.x = x || 0;
@@ -15,19 +30,32 @@
 		this.type = "doodad";
 	};
 
+	// define the basic prototype object for the doodad constructor function
 	doodad.prototype = {};
 
-	// the doodad class update function
+	/*
+		The doodad entitiy update function which currently only moves the doodad down the 
+		screen vertically based on the doodads speed and the time elapsed from the last update/frame
+	*/
+
 	doodad.prototype.update = function(){
 		this.y += (this.speed * g.dt * this.direction);
 	};
 
-	// the doodad class draw function
+	/*
+		Draws the doodad on the canvas given with the canvas context.	
+	*/
+
 	doodad.prototype.draw = function(ctx){
 		g.draw.DrawImage(ctx, this.image, this.x, this.y, this.rotation);
 	};
 
-	// returns true if the doodad is off the canvas
+	/*
+		Allows client code to query if the doodad is out of the screen bounds for the main game canvas.
+
+		Used by the entitiy manager to check and clear doodads that are no more visible on the screen
+	*/
+
 	doodad.prototype.isOffScreen = function(){
 		var y = this.y;
 
@@ -50,7 +78,6 @@
 		}
 	};
 
-	// namespace the doodad class
+	// namespace the doodad constructor function
 	g.doodad = doodad;
-	
 })(window.game = window.game || {});

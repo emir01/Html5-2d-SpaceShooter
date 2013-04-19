@@ -1,12 +1,29 @@
+/*
+	Module containing simple centralized debugging utilities.
+*/
 (function(g){
-	// setup debug functions to the main game object
 	g.dbg = (function(){
+
+		/*
+			Public functions
+			===============================================
+		*/
+
+		/*
+			Logs the simple message on the console.
+		*/	
 
 		var log = function(msg){
 			console.log(msg);
 		};
 
+		/*
+			RMP
+			===============================================
+		*/
+
 		return {
+			// Logging utilities
 			log:log
 		};
 	})();

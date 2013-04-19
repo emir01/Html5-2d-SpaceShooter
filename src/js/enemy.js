@@ -1,5 +1,21 @@
-// The main enemy class
+/*
+	The main enemy constructor function. The enemy is defined using a 
+	constructor functiona as they are to be multiple enemies rendered on the screen
+	and a single RMP aproach would not be valid.
+*/
+
 (function(g){
+	
+	/*
+		Defines the main enemy constructor function
+		that contain the basic enemy object properties including the image,
+		initial positions, speed, rotation and state properties.
+
+		Aditional functionality that should be accessible to the entitiy manager
+		is defined via the prototpy eobject, which actually improves the memory consumption
+		when creating multiple enemeies ( does not duplicate function objects )
+	*/
+
 	var enemy = function(img, x, y, speed, rotation, doesFire){
 		this.image = img;
 		this.x = x;
@@ -12,15 +28,27 @@
 		this.type = "enemy";
 	};
 
-	// setup the basic enemy prototype
+	// Initialize the prototype to a basic object.
 	enemy.prototype = {};
 
-	// the enemy class update function
+	/*
+		The main update call that is to be called from the main game loop or in this case
+		the entitiy manager.
+
+		Currently only moves the enemy down the canvas based on the enemy speed.
+	*/	
+
 	enemy.prototype.update = function(){
 		this.y += (this.speed * g.dt);
 	};
 
-	// the enemy class draw function
+	/*
+		The main draw call for the enemy entitiy that is to be called from the main game loop
+		or from the entity manager.
+
+		Currently only displays/draws the enemey image on the given coordinates.
+	*/
+
 	enemy.prototype.draw = function(ctx){
 		g.draw.DrawImage(ctx, this.image, this.x, this.y, this.rotation);
 
@@ -29,7 +57,11 @@
 		}
 	};
 
-	// returns true if the enemy is off the canvas
+	/*
+		The enemy entitiy check that determines if the enemy is off the screen. Usable
+		by entitiy manager code, to remove tracked enemy entities once they get of the screen
+	*/
+
 	enemy.prototype.isOffScreen = function(){
 		var y = this.y;
 
@@ -52,7 +84,11 @@
 		}
 	};
 
-	// Return a bounding box for the projectile
+	/*
+		 Return a bounding box for the enemy entity based on the position
+		 and image dimensions.
+	*/
+
 	enemy.prototype.getBoundingBox = function(){
 		var boundingBox = {};
 
@@ -65,6 +101,7 @@
 		return boundingBox;
 	};
 
-	// namespace the enemy class
+	// namespace the enemy constructor function
 	g.enemy = enemy;
+
 })(window.game = window.game || {});

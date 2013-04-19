@@ -1,6 +1,14 @@
-// An entity manager script that handles
-// update and draw calls for multiple entities not
-// controlled by the player
+/*	
+	An entity manager script that handles
+	update and draw calls for multiple entities which are not controlled by the player.
+
+	Contains an internal array of entities, where for each one  it calls update and draw methods, allowing
+	them to update and draw themselfs on the provided canvas elements.
+
+	As it manages all the non-player entities it is also responsible for calculating collisions between 
+	apropriate entities
+*/
+
 (function(g){
 	var emanager = (function(){
 
@@ -27,11 +35,6 @@
 
 		// ======================== Public Functions ==============
 		// =========================================================
-
-		// init stub for the enitity manager
-		var init = function(){
-
-		};
 
 		// used to clear/restart the game clearing up all the entities
 		var reset = function(){
@@ -181,9 +184,12 @@
 			}
 		};
 
-		// for a given projectile checks if it collides with any enemy.
-		// If there is an enemy collision we return the enemy index so we can remove both entities.
-		// If there is no collision we return a negative index
+		/*	
+			For a given projectile checks if it collides with ay enemy.
+			If there is an enemy collision we return the enemy index so we can remove both entities.
+			If there is no collision we return a negative index
+		*/
+
 		var checkProjectileEnemyCollisions = function(projectileEntity){
 			var colidedIndex = -1;
 
@@ -204,9 +210,8 @@
 			return colidedIndex;
 		};
 
-
 		/*
-			Check if an enemy collides with the player 
+			Check if an enemy entitiy collides with the player entitiy.
 		*/
 
 		var checkCollisionWithPlayer = function(enemy){
@@ -261,15 +266,21 @@
 		// =========================================================
 
 		return {
-			init:init,
-			reset:reset,
-			addEntity:addEntity,
-			drawEntities:drawEntities,
-			updateEntities:updateEntities
-		};
 
+			// Public functions
+			reset:reset,
+
+			// Construction functions.
+			addEntity:addEntity,
+
+			// Main game loop functions
+			updateEntities:updateEntities,
+			drawEntities:drawEntities
+			
+		};
 	})();
 
+	// Namespace the entitiy manager
 	g.emanager = emanager;
 
 })(window.game = window.game || {});

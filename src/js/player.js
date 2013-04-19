@@ -97,9 +97,7 @@
 			var keyStates = g.input.keyState;
 
 			var canvasWidth = g.canvas.width;
-
-			g.dbg.log("Canvas Width " + canvasWidth);
-
+			
 			if(keyStates["left"]){
 				x -= speed * g.dt;
 				activeImage = g.assets.playerLeft;

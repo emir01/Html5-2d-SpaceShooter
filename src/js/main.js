@@ -1,19 +1,30 @@
-// Setup the main game elements and game loop
-(function(g){
+/*
+	The main game initialization script. Loaded and initialized after all the other game scripts and entities have been loaded
+	and initialized.
 
-	// start when the dom is loaded
+	Sets up initial canvas properties for the game namespace.
+
+	Loads all the resources for the game using the g.loader ( The asset loader )
+
+	Sets up the game loop using the animation-api.
+*/
+
+(function(g){
+	/*
+		Starts initialization when the dom is loaded
+	*/
+
 	$(function(){
 
+		// Get the canvas
 		g.canvas = document.getElementById('main-canvas');
 		g.ctx = g.canvas.getContext('2d');
 
-		// load the assets required in the game
+		// Setup the assets namespace and start loading assets
 		g.assets = {};
 		var a = g.assets;
-
-		// ======================== Load Assets ===================
-		//=========================================================
-		
+				
+		// ### Loading image assets
 		a.player = g.loader.AddAsset("assets/player.png");
 		a.playerRight = g.loader.AddAsset("assets/playerRight.png");
 		a.playerLeft = g.loader.AddAsset("assets/playerLeft.png"); 
@@ -32,7 +43,7 @@
 		a.background = g.loader.AddAsset("assets/Background/background-full.png");
 		a.backgroundParalax = g.loader.AddAsset("assets/Background/background-full-back.png");
 
-		// -------------------------------------- Audio
+		// ### Loading audio assets
 		// audio is loaded withouth extension as the loader will handle
 		// what will get retrieved based on the browser format support
 		a.soundLaser1 = g.loader.AddAsset("assets/Audio/Laser2", true);
@@ -45,47 +56,58 @@
 		a.soundExplosion3 = g.loader.AddAsset("assets/Audio/Explosion1", true);
 
 		a.backgroundMusic = g.loader.AddAsset("assets/Audio/background", true);
-
+		
+		// Start the asset loading process
 		// once everything is loaded we are going to start calling the game loop
 		g.loader.LoadAll(startGame);
 	});
 
-	// ======================== Main Functions =======================
-	//================================================================
+	/*
+		Main Functions
+		===========================================================================
+	*/
+	
+	/*
+		Called once all the assets are loaded. Hides the asset loading overlay and starts the initialization of 
+		major game modules.
+	*/
 
-	// the start game function that will initialize initial game state
-	// and start the game loop
 	function startGame(){
-		// remove the "loading screen"
+		// Remove the "loading screen"
 		$("#main-loading").hide();
 
-		// initialize dom ui
+		// Initialize dom ui
 		g.domui.initDomUI(resetGame);
 
-		// start the background music
-		//g.assets.backgroundMusic.loop().play().fadeIn();
+		// Start the background music
+		// g.assets.backgroundMusic.loop().play().fadeIn();
 
+		// Initialize the 
 		g.background.setupBackground();
 
+		// Fully reset the game state
 		resetGame();
 
-		// init the enemy spawner
+		// Init the enemy spawner
 		g.spawner.start();
 
-		// init the doodad spawner
+		// Init the doodad spawner
 		g.doodadspawner.start();
 
-		// setup delta time
+		// Setup the delta time functionality which is covered in the main game loop
 		g.last = new Date().getTime(),
 		g.dt = 0;
 
-		// start the game loop
+		// Start the game loop
 		gameLoop();
 	};
 
-	function resetGame (){
-		g.dbg.log("Reseting Game");
+	/*
+		Resets the entire game state and initializations for some of the modules.
+		This function sets the game to an initial starting state.
+	*/
 
+	function resetGame (){
 		// reset state
 		g.state.setState();
 
@@ -109,7 +131,15 @@
 
 	};
 
-	// The main Game Loop
+	/*
+		The main game loop which relies on the requestAnimFrame call to setup the next call of the game loop.
+
+		We also calcualte the time from the last call to gameLoop. This value expressed in milliseconds called delta time (dt)
+		is used to implement smoother animations by moving/translating entities in a constant rate.
+
+		The main game loop function calls the update and draw calls.
+	*/
+
 	function gameLoop(){
 
 		requestAnimFrame(gameLoop);
@@ -126,6 +156,7 @@
 		// clear the screen
 		g.draw.Clear(g.ctx);
 
+		// if the game is not over
 		if(!g.state.isGameOver()){
 			// Make the update call
 			updateCall();
@@ -138,7 +169,10 @@
 		}
 	};
 
-	// the update call
+	/*
+		The main update call. Calls the update methods on all the dependent and major modules of the game.
+	*/
+
 	function updateCall(){
 		// call the background module update
 		g.background.update();
@@ -161,7 +195,10 @@
 		g.state.update();
 	};
 
-	// the main draw call
+	/*
+		The main draw call. Calls the draw methods on all the dependend and major modules of the game.
+	*/
+
 	function drawCall() {
 		// draw the background
 		g.background.draw(g.ctx);
@@ -177,5 +214,4 @@
 		// draw the player
 		g.state.draw(g.ctx);
 	};
-
 })(window.game = window.game || {});
