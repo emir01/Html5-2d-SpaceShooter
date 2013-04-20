@@ -95,32 +95,71 @@
 		// and its index in the emanager entitiy collection
 		var checkCollisions = function(entWrapper, entitiyIndex){
 
-			// if the entitiy was updated check its collisions with related entities
+			// If the entitiy was updated check its collisions with related entities
+			// At this point do not check if the projectiles belong to an enemy
 			if(entWrapper.entity.type == "projectile"){
-				// check for enemy collisions for the projectile
-				var collisionIndex = checkProjectileEnemyCollisions(entWrapper.entity)
 
-				if(collisionIndex !== -1){
-					var colidedEnemy = entities[collisionIndex];
+				// If the projetile does not belong to the enemy, then it belongs to the player
+				// so we are going to check for projectile-enemy collisions
+				if(!entWrapper.entity.isEnemy){
+					// check for enemy collisions for the projectile
+					var collisionIndex = checkProjectileEnemyCollisions(entWrapper.entity)
 
-					removeCollidedEntities(collisionIndex, entitiyIndex);
-					playExplosionAudio();
+					if(collisionIndex !== -1){
+						var colidedEnemy = entities[collisionIndex];
 
-					// ask the particle manager to render an enemy
-					// explosion at the collision cords
-					g.particle.enemyExplosion(
-										colidedEnemy.entity.x, 
-										colidedEnemy.entity.y,
-										colidedEnemy.entity.image.width,
-										colidedEnemy.entity.image.height
-										);
+						removeCollidedEntities(collisionIndex, entitiyIndex);
+						playExplosionAudio();
 
-					// delete both the colided objects from memory
-					delete colidedEnemy;
-					delete entWrapper;
+						// ask the particle manager to render an enemy
+						// explosion at the collision cords
+						g.particle.enemyExplosion(
+											colidedEnemy.entity.x, 
+											colidedEnemy.entity.y,
+											colidedEnemy.entity.image.width,
+											colidedEnemy.entity.image.height
+											);
 
-					// Update the state
-					g.state.enemyDestroyed();
+						// delete both the colided objects from memory
+						delete colidedEnemy;
+						delete entWrapper;
+
+						// Update the state
+						g.state.enemyDestroyed();
+
+						// Do not continue with checks
+						return;
+					}
+				}
+				else{
+					// The projectile was fired by the  enemy.
+					var enemyProjectileHitPlayer = checkCollisionWithPlayer(entWrapper.entity);
+
+					var enemyProjectile = entWrapper.entity;
+
+					if(enemyProjectileHitPlayer){
+						g.dbg.log("Enemy projectile hit player");
+
+						// remove the enemy projectile from the tracked entities
+						entities.splice(entitiyIndex, 1);
+
+						// Explode the player by using the enemy explision particle
+						// function
+
+						g.particle.enemyExplosion(
+										g.player.getX(), 
+										g.player.getY(),
+										g.player.getW(),
+										g.player.getH()
+						);
+
+						g.player.playerHit();
+
+						delete entWrapper.entity;
+
+						// Do not continue with checks
+						return;
+					}
 				}
 			}
 
@@ -151,9 +190,12 @@
 					g.player.playerHit();
 
 					delete entWrapper.entity;
+
+					// Do not continue with checks
+					return;
 				}
 			}
-		}
+		};
 
 		var removeCollidedEntities = function(firstEntitiyIndex, secondEntitiyIndex){
 			// check the splicing order so we remove both the entities
@@ -212,9 +254,13 @@
 
 		/*
 			Check if an enemy entitiy collides with the player entitiy.
+
+			The enemy entities can be either:
+				Enemy ships
+				Enemy projectiles
 		*/
 
-		var checkCollisionWithPlayer = function(enemy){
+		var checkCollisionWithPlayer = function(enemyEntitiy){
 
 			// if the player cant be hit just return false
 			if(!g.player.playerIsHittable()){
@@ -222,7 +268,7 @@
 			}
 
 			var playerbb =	 g.player.getBoundingBox();
-			var enemybb = enemy.getBoundingBox();
+			var enemybb = enemyEntitiy.getBoundingBox();
 
 			var theyIntersect = false;
 

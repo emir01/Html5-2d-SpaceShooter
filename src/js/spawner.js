@@ -107,7 +107,9 @@
 				g.assets.enemy,
 				randomX,
 				-(g.assets.enemy.height-5),
-				randomSpeed
+				randomSpeed,
+				0, // zero rotation
+				true // does it fire	
 			);
 			
 			return shipEnemy;

@@ -26,13 +26,21 @@
 		var drawBoundingBoxes = false;
 
 		/*
+			Flag controlling if the player is invurnerable through the entire game.
+			Used for debugging purposes for certain features
+		*/
+
+		var playerIsInvu = false;
+
+		/*
 			RMP
 			============================================================
 		*/
 		
 		return {
 			soundEnabled:soundsEnabled,
-			drawBoundingBoxes:drawBoundingBoxes
+			drawBoundingBoxes:drawBoundingBoxes,
+			playerIsInvu:playerIsInvu
 		};
 	})();
 })(window.game = window.game || {});

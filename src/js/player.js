@@ -15,10 +15,14 @@
 		var x = 100;
 		var y = 100;
 
-		var speed = 0.5;
+		// The player speed 
+		var speed = 0.7;
 
 		var width = 50;
 		var height = 50;
+
+		// Internal player config properties
+		var playerProjectileSpeed = 0.7
 
 		// control how much will the player appear on the opposite side when 
 		// exiting from the left or right.
@@ -29,7 +33,7 @@
 		var playerCanBeHit = true;
 
 		// Internal draw flag used to implement the blinking while the player is invulnerable
-		var drawPlayer = true;
+		var drawPlayer = false;
 
 		/*
 			The current active player image to be drawn
@@ -230,6 +234,13 @@
 		*/
 
 		var setPlayerHittable = function(state){
+			
+			// if the player is invu set the hittable to false
+			if(g.config.playerIsInvu){
+				playerCanBeHit = false;
+				return;
+			}
+
 			playerCanBeHit = state;
 		};
 
@@ -251,7 +262,7 @@
 				g.assets.laserGreen, // projectile image
 				(x + width / 2) - (g.assets.laserGreen.width/2), // projectile x
 				y - g.assets.laserGreen.height, // projectile y
-				0.5, // projectile speed
+				playerProjectileSpeed, // projectile speed
 				-1,
 				false
 			);	
@@ -284,15 +295,47 @@
 			}
 		};
 
-	
-		return {
+		/*
+			Player internal state getters. These should be used instead of the raw properties
+			because of closures. Trying to get raw coordinate properties for example will return the 
+			original values
+			========================================================================================
+		*/
 
+		var getX = function(){
+			return x;
+		};
+
+		var getY = function(){
+			return y;
+		};
+
+		var getW = function(){
+			return width;
+		};
+
+		var getH = function(){
+			return height;
+		};
+
+		/*
+			RMP
+			==========================================================================================
+		*/
+
+		return {
 			// Basic player properties and methods
 			x:x,
 			y:y,
 			w:width,
 			h:height,
 			getBoundingBox:getBoundingBox,
+
+			// Player basic state property getters
+			getX:getX,
+			getY:getY,
+			getW:getW,
+			getH:getH,
 
 			// Initialization and reset methods
 			reset:reset,

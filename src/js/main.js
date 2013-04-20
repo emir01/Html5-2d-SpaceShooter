@@ -39,6 +39,7 @@
 		a.explosion = g.loader.AddAsset("assets/explosion.png");
 
 		a.laserGreen = g.loader.AddAsset("assets/laserGreen.png");
+		a.laserRed = g.loader.AddAsset("assets/laserRed.png");
 
 		a.background = g.loader.AddAsset("assets/Background/background-full.png");
 		a.backgroundParalax = g.loader.AddAsset("assets/Background/background-full-back.png");

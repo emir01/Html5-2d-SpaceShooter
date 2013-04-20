@@ -27,7 +27,7 @@
 		this.y = y || 0;
 		this.speed = speed || 1;
 		this.direction = direction || 1;
-		this.isEnemy = isEnemy || true;
+		this.isEnemy = isEnemy || false;
 
 		// The Entitiy manager will know this object is of type projectile
 		this.type = "projectile";

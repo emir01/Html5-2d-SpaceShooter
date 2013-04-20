@@ -5,7 +5,7 @@
 */
 
 (function(g){
-	
+
 	/*
 		Defines the main enemy constructor function
 		that contain the basic enemy object properties including the image,
@@ -17,13 +17,32 @@
 	*/
 
 	var enemy = function(img, x, y, speed, rotation, doesFire){
+		// The enemy image that is drawn on the canvas
 		this.image = img;
+
+		// the enemy position variables
 		this.x = x;
 		this.y = y;
+
 		this.speed = speed;
 		this.rotation = rotation || 0;
-		this.doesFire = doesFire || false;
 
+		// The enemy firing variables for the specific enemy
+		this.doesFire = doesFire || false;
+		
+		// controls the chance that the enemy that can fire, will fire at the current update call
+		this.fireChance = 0.02;
+
+		// Controls the rate of fire(ms). The enemy cannot fire more that one time per the value, which
+		// at this case is one second.
+		this.maxFireRate = 1000;
+
+		// Flag controlling if the enemy can fire. Assosiated with the maxFireRate
+		this.enemyCanFireAgain = true;
+
+		// how much faster the projectile will be from the enemy that is firing it
+		this.projectileSpeedBoost = 0.15;
+		
 		// so the entitiy manger knows this object is of type enemy
 		this.type = "enemy";
 	};
@@ -40,6 +59,50 @@
 
 	enemy.prototype.update = function(){
 		this.y += (this.speed * g.dt);
+
+		// It will give us a random value from 0 to 1 which we will check
+		// against the enemy fire rate
+		var enemyDoesFire = Math.random();
+		if(enemyDoesFire <= this.fireChance){
+
+			if(this.enemyCanFireAgain && this.doesFire) {
+				
+				// The enemy should fire a new projectile
+				var enemyProjectile = new g.projectile(
+				
+				// Projectile image
+				g.assets.laserRed, 
+				
+				// Projectile x calculated for the enemy ship firing the projectile
+				(this.x + this.image.width / 2) - (g.assets.laserGreen.width/2), 
+
+				// Projectile y calculated for the enemy ship firing the projectile
+				this.y + this.image.height , 
+
+				// Projectile speed is a bit more than the enemy speed
+				this.speed + this.projectileSpeedBoost,
+				
+				// Set the direction to go down
+				1, 
+
+				// Is it an enemy projectile
+				true);
+
+				// Add the projectile to the entitiy manager
+				g.emanager.addEntity(enemyProjectile);
+
+				// Stop the enemy from firing again until the max fire rate time passes
+				this.enemyCanFireAgain = false;
+
+				// set the timeout to reset the fire flag
+				// using an enemy reference because can't use 'this' in the callback function
+				var enemy = this;			
+
+				setTimeout(function(){
+					enemy.enemyCanFireAgain = true;
+				}, this.maxFireRate);
+			}
+		}
 	};
 
 	/*

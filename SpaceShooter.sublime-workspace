@@ -80,23 +80,27 @@
 	},
 	"file_history":
 	[
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/input.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/draw.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/main.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/domui.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/emanager.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/default.html",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/player.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/debug.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/background.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/animation-api.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/draw.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/doodadspawner.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/doodad.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/input.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/state.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/spawner.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/loader.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/particle.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/player.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/projectile.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/MODULE_TEMPLATE.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/css/main.css",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/domui.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/default.html",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/main.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/debug.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs",
 		"/C/Users/Emir/Desktop/Python/LPTHW/Ex5/ex5.py",
 		"/F/Projects/DSS/document-search-system/DSS/DSS.Presentation/DSS.Presentation.Web/Content/less/Modules/FileUploadModule.less",
@@ -124,6 +128,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"init",
+			"backgroundX",
+			"clearover",
+			"showGameOverOverlay",
+			"showPlayerLives",
 			"keyState",
 			"false",
 			"keyState",
@@ -266,6 +275,22 @@
 		"selected_items":
 		[
 			[
+				"plaer",
+				"src/js/player.js"
+			],
+			[
+				"domu",
+				"src/js/domui.js"
+			],
+			[
+				"main",
+				"src/js/main.js"
+			],
+			[
+				"defau",
+				"src/default.html"
+			],
+			[
 				"state",
 				"src/js/state.js"
 			],
@@ -288,10 +313,6 @@
 			[
 				"emana",
 				"src/js/emanager.js"
-			],
-			[
-				"main",
-				"src/js/main.js"
 			],
 			[
 				"stat",
@@ -332,10 +353,6 @@
 			[
 				"projec",
 				"src/js/projectile.js"
-			],
-			[
-				"defau",
-				"src/default.html"
 			],
 			[
 				"fileuploadmo",
