@@ -3,6 +3,9 @@ body{
 	/*font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;*/
 	/*font-family: 'Orbitron', sans-serif;*/
 	font-family: 'Press Start 2P', cursive;
+
+	background-image:url("images/background.png");
+	background-repeat: repeat;
 }
 
 #game-wrapper{

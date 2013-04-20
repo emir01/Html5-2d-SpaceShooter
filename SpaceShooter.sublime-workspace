@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"bac",
+				"background-repeat"
+			],
+			[
 				"canvas",
 				"canvasWidth"
 			],
@@ -35,6 +39,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/css/main.css",
+			"settings":
+			{
+				"buffer_size": 1909,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/default.html",
+			"settings":
+			{
+				"buffer_size": 3260,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -80,25 +100,25 @@
 	},
 	"file_history":
 	[
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/main.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/domui.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/emanager.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/default.html",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/spawner.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/projectile.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/player.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/debug.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/particle.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/background.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/emanager.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/main.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/animation-api.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/domui.js",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/default.html",
+		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/debug.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/draw.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/doodadspawner.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/doodad.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/input.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/enemy.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/state.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/spawner.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/loader.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/particle.js",
-		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/projectile.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/MODULE_TEMPLATE.js",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/css/main.css",
 		"/F/Projects/Github/Html5-2d-SpaceShooter/src/js/configs",
@@ -128,6 +148,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"get",
+			"getX",
+			"var",
+			"checkCollisionWithPlayer",
+			"enemy",
+			"checkCollisionWithPlayer",
+			"playerFireWeapon",
 			"init",
 			"backgroundX",
 			"clearover",
@@ -228,8 +255,63 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/css/main.css",
+					"settings":
+					{
+						"buffer_size": 1909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								320,
+								320
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/default.html",
+					"settings":
+					{
+						"buffer_size": 3260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								552,
+								552
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 220.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -275,16 +357,56 @@
 		"selected_items":
 		[
 			[
+				"defa",
+				"src/default.html"
+			],
+			[
+				".css",
+				"src/css/main.css"
+			],
+			[
+				"player",
+				"src/js/player.js"
+			],
+			[
+				"particle",
+				"src/js/particle.js"
+			],
+			[
+				"back",
+				"src/js/background.js"
+			],
+			[
+				"projectile",
+				"src/js/projectile.js"
+			],
+			[
+				"main",
+				"src/js/main.js"
+			],
+			[
+				"spawner",
+				"src/js/spawner.js"
+			],
+			[
+				"confi",
+				"src/js/configs.js"
+			],
+			[
+				"emana",
+				"src/js/emanager.js"
+			],
+			[
+				"projec",
+				"src/js/projectile.js"
+			],
+			[
 				"plaer",
 				"src/js/player.js"
 			],
 			[
 				"domu",
 				"src/js/domui.js"
-			],
-			[
-				"main",
-				"src/js/main.js"
 			],
 			[
 				"defau",
@@ -295,24 +417,12 @@
 				"src/js/state.js"
 			],
 			[
-				"defa",
-				"src/default.html"
-			],
-			[
 				"ema",
 				"src/js/emanager.js"
 			],
 			[
-				"player",
-				"src/js/player.js"
-			],
-			[
 				"enem",
 				"src/js/enemy.js"
-			],
-			[
-				"emana",
-				"src/js/emanager.js"
 			],
 			[
 				"stat",
@@ -349,10 +459,6 @@
 			[
 				"draw",
 				"src/js/draw.js"
-			],
-			[
-				"projec",
-				"src/js/projectile.js"
 			],
 			[
 				"fileuploadmo",
