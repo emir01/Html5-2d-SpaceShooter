@@ -119,7 +119,7 @@
 			The game over overlay is hidden when a new game is started, in which case the clearOverlays function is called
 		*/
 
-		var showGameOverOverlay = function(score, wave){
+		var showGameOverOverlay = function(score, wave, time){
 			// hide any other dom elements
 			$("#player-lives-message").hide();
 
@@ -127,6 +127,8 @@
 			$("#gameover-score").text(score);
 
 			$("#gameover-wave").text(wave);
+
+			$("#gameover-time").text(time);
 
 			$("#game-over-screen").slideDown();
 		};

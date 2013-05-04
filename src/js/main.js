@@ -110,7 +110,7 @@
 
 	function resetGame (){
 		// reset state
-		g.state.setState();
+		g.state.setInitialState();
 
 		// Clears any dom overlays
 		g.domui.clearOverlays();
@@ -166,7 +166,10 @@
 			drawCall();
 		}
 		else{
-			g.domui.showGameOverOverlay(g.state.getPlayerScore(), g.state.getCurrentWave());
+			if(g.state.getState() != g.state.gameStates.GameOverDisplayed){
+				g.domui.showGameOverOverlay(g.state.getPlayerScore(), g.state.getCurrentWave(),g.state.getTimeElapsed());
+				g.state.setState(g.state.gameStates.GameOverDisplayed);
+			}
 		}
 	};
 

@@ -10,13 +10,22 @@
 (function(g){
 	g.state = (function(){
 
-		// ================= Inner constructor functions ============
+		// ===== Inner constructor functions and objects ============
 		// ==========================================================
+
+		var gameStates = {
+			MainMenu:"MainMenu",
+			Playing:"Playing",
+			Paused:"Paused",
+			GameOver:"GameOver",
+			GameOverDisplayed:"GameOverDisplayed"
+		};
 
 		// ======================== Properties =======================
 		// ===========================================================
 
-		// The current state of the players remaining lives
+		// The current state of the players remaining liveste
+		
 		var playerLives;
 
 		// The current state of the players score
@@ -47,6 +56,11 @@
 		// once Screens/Menus/Pause/Instruction options are added
 		var gameOver = false;
 
+		/*
+			Holds the current game state. Has a single value from the gameStates collection.
+		*/	
+		var currentGameState;
+
 		// ======================== Public Functions =================
 		// ===========================================================
 
@@ -55,13 +69,34 @@
 			and on game restarts to revert to the original starting state
 		*/
 
-		var setState = function(){
-			
+		var setInitialState = function(){
 			resetStateProperties();
-			
 			resetClock();
 		};
 
+		/*
+
+			Sets the value for the state variable
+		*/
+
+		var setState =  function(stateValue){
+
+			// only set the currentGameState variable if the
+			// state value parameter is a valid game state value
+
+			if(typeof gameStates[stateValue] != "undefined"){
+				currentGameState = stateValue;
+			}
+		};
+
+		/*
+			Get the current value for the state variable
+		*/
+
+		var getState = function(){
+			return currentGameState;
+		};
+	
 		/*
 			As the State is an "entitiy" like object that gets updated on each "frame"
 			it has an update call which can be called from the main game loop.
@@ -136,6 +171,8 @@
 			playerInvuTime = 5000;
 
 			gameOver = false;
+
+			currentGameState = gameStates.Playing;
 		};
 
 		/*
@@ -152,23 +189,8 @@
 		*/
 
 		var setTimeElapsed = function(){
-			var now = new Date();
-
-			var dif = new Date(now - startPlayTime);
-
-			var seconds = dif.getSeconds();
-			var minutes = dif.getMinutes();
-
-			// check for '0' prefix
-			if(seconds.toString().length == 1){
-				seconds = "0"+seconds;
-			}
-
-			if(minutes.toString().length == 1){
-				minutes = "0"+minutes;
-			}
-
-			var timeString = minutes +":"+seconds;
+			
+			var timeString = calculateElapsedTime();
 			g.domui.setTimeElapsed(timeString);
 		};
 
@@ -225,6 +247,15 @@
 		};
 
 		/*
+			Returns the current time elapsed.
+		*/
+
+		var getTimeElapsed = function(){
+			var elapsedTime = calculateElapsedTime();
+			return elapsedTime;
+		};
+
+		/*
 			Gets the current state of the score variable
 		*/
 
@@ -249,12 +280,51 @@
 			return gameOver;
 		};
 
+		// ====== Private Functions used to calculate values =========
+		// ===========================================================
+
+		/*
+			Calculates/Creates the current time elapsed string based on the 
+			stored startPlayTime value
+		*/
+
+		var calculateElapsedTime = function(){
+			var now = new Date();
+
+			var dif = new Date(now - startPlayTime);
+
+			var seconds = dif.getSeconds();
+			var minutes = dif.getMinutes();
+
+			// check for '0' prefix
+			if(seconds.toString().length == 1){
+				seconds = "0"+seconds;
+			}
+
+			if(minutes.toString().length == 1){
+				minutes = "0"+minutes;
+			}
+
+			var timeString = minutes +":"+seconds;
+
+			return timeString;
+		};
+
 		// ======================== RMP ==============================
 		// ===========================================================
 
 		return {
 			// Initialization properties
+			setInitialState:setInitialState,
+
+			// Functions for controlling the main state variable from other 
+			// parts in the code
 			setState:setState,
+			getState:getState,
+
+			// Make the states object containing all the state posibilities
+			// public so the state can be set from outside code.
+			gameStates:gameStates,
 
 			// Main loop related properties
 			update:update,
@@ -266,9 +336,11 @@
 
 			// Getting functions that query state
 			getSpawnTime:getSpawnTime,
+			getTimeElapsed:getTimeElapsed,
 			getPlayerLives:getPlayerLives,
 			getPlayerScore:getPlayerScore,
 			getCurrentWave:getCurrentWave,
+
 			playerInvuTime:playerInvuTime,
 			isGameOver:isGameOver
 		};
